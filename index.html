@@ -3,361 +3,183 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#2A0A08">
-<meta name="description" content="MOBURIX — Publish. Connect. Earn.">
+<meta name="theme-color" content="#590D09">
 <title>MOBURIX — Publish. Connect. Earn.</title>
 
 <style>
 :root {
   --red: #A10F08;
   --burgundy: #590D09;
-  --background: #2A0A08;
-  --card: #3B1110;
+  --dark: #2A0A08;
   --white: #FFFFFF;
-  --muted: #D2B8B6;
-  --border: #64201B;
+  --background: #100909;
+  --card: #1C1212;
+  --muted: #BFAEAC;
+  --border: #42201D;
 }
 
-* {
-  box-sizing: border-box;
-  margin: 0;
-  padding: 0;
-}
+* { box-sizing: border-box; }
 
 body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
   background: var(--background);
   color: var(--white);
-  font-family: Arial, sans-serif;
-  line-height: 1.6;
 }
 
-button, input, textarea {
-  font: inherit;
-}
+button, input, textarea { font: inherit; }
 
-button {
-  cursor: pointer;
-}
+button { cursor: pointer; }
 
 header {
+  background: var(--dark);
+  padding: 18px 16px;
+  border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
   z-index: 10;
-  background: #220706;
-  border-bottom: 1px solid var(--border);
-  padding: 15px 5%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 15px;
 }
 
-.logo {
-  font-size: 25px;
+.brand {
+  font-size: 23px;
   font-weight: 900;
   letter-spacing: 1px;
 }
 
-.logo span {
-  color: #FF5147;
-}
+.brand span { color: #FF6258; }
 
-header nav {
-  display: flex;
-  gap: 16px;
-  align-items: center;
-}
-
-nav button, .text-button {
-  background: none;
-  border: none;
+.tagline {
   color: var(--muted);
-  padding: 7px;
+  font-size: 12px;
+  margin-top: 4px;
 }
 
-nav button:hover, nav button.active {
-  color: white;
-}
-
-.primary {
-  background: linear-gradient(135deg, var(--red), #D72B21);
-  color: white;
-  border: none;
-  padding: 11px 17px;
-  border-radius: 9px;
-  font-weight: bold;
-}
-
-.layout {
-  max-width: 1200px;
+main {
+  max-width: 680px;
   margin: auto;
-  padding: 28px 18px 80px;
-  display: grid;
-  grid-template-columns: 200px minmax(0, 1fr) 245px;
-  gap: 22px;
+  padding: 20px 15px 90px;
 }
 
-.sidebar, .rightbar {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-}
-
-.panel, .post, .hero, .composer {
+.card {
   background: var(--card);
   border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 18px;
-}
-
-.side-link {
-  display: block;
-  width: 100%;
-  text-align: left;
-  padding: 12px;
-  margin: 3px 0;
-  color: var(--muted);
-  border: none;
-  border-radius: 8px;
-  background: transparent;
-}
-
-.side-link:hover, .side-link.active {
-  background: var(--burgundy);
-  color: white;
-}
-
-.hero {
-  padding: 27px;
-  margin-bottom: 20px;
-  background: linear-gradient(130deg, #72120D, #350B0A 75%);
-}
-
-.hero small {
-  color: #FFC0BB;
-  font-weight: bold;
-  letter-spacing: 2px;
-}
-
-h1 {
-  font-size: clamp(28px, 5vw, 42px);
-  line-height: 1.2;
-  margin: 12px 0;
-}
-
-h2 {
-  font-size: 20px;
-  margin-bottom: 10px;
-}
-
-h3 {
-  font-size: 16px;
-  margin-bottom: 7px;
-}
-
-p {
-  color: var(--muted);
-}
-
-.hero p {
-  max-width: 480px;
+  border-radius: 16px;
+  padding: 20px;
   margin-bottom: 18px;
 }
 
-.section-title {
-  margin: 22px 0 13px;
-}
+h1, h2, h3 { margin-top: 0; }
 
-.composer {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  margin-bottom: 20px;
-}
+p { line-height: 1.6; }
 
-.avatar {
-  width: 42px;
-  height: 42px;
-  min-width: 42px;
-  display: grid;
-  place-items: center;
-  background: linear-gradient(135deg, var(--red), #8C3B35);
-  border-radius: 50%;
-  font-weight: bold;
-}
+.muted { color: var(--muted); }
 
-.composer button {
-  flex: 1;
-  text-align: left;
-  color: var(--muted);
-  border: 1px solid var(--border);
-  background: #2A0A08;
-  border-radius: 30px;
-  padding: 11px 15px;
-}
-
-.post {
-  margin-bottom: 16px;
-}
-
-.post-head {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  margin-bottom: 14px;
-}
-
-.post-head small {
-  color: var(--muted);
-}
-
-.post-content {
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
-  margin-bottom: 15px;
-}
-
-.post-actions {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
-  border-top: 1px solid var(--border);
-  padding-top: 12px;
-}
-
-.post-actions button {
-  background: transparent;
-  color: var(--muted);
-  border: none;
-  padding: 5px;
-}
-
-.post-actions button:hover {
-  color: #FF756D;
-}
-
-.stat {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  color: var(--muted);
-}
-
-.stat strong {
-  color: white;
-}
-
-.tag {
-  display: inline-block;
-  padding: 5px 9px;
-  background: #53130F;
-  border-radius: 20px;
-  color: #FFD4D0;
-  margin: 4px 3px 0 0;
-  font-size: 12px;
-}
-
-.creator {
-  display: flex;
-  align-items: center;
-  gap: 9px;
-  margin: 13px 0;
-}
-
-.creator .avatar {
-  width: 35px;
-  height: 35px;
-  min-width: 35px;
-}
-
-.creator p {
-  font-size: 12px;
-}
-
-.full {
-  width: 100%;
-  margin-top: 12px;
-}
-
-.page {
-  display: none;
-}
-
-.page.active {
+input, textarea {
   display: block;
-}
-
-.field {
   width: 100%;
-  padding: 12px;
-  margin: 8px 0 14px;
-  border-radius: 8px;
-  border: 1px solid var(--border);
-  background: #260807;
+  background: #100909;
   color: white;
+  border: 1px solid #67403C;
+  border-radius: 10px;
+  padding: 14px;
+  margin: 9px 0 15px;
+  outline: none;
 }
 
-textarea.field {
-  min-height: 140px;
+input:focus, textarea:focus {
+  border-color: #FF6258;
+}
+
+textarea {
+  min-height: 100px;
   resize: vertical;
 }
 
-.empty {
-  text-align: center;
-  padding: 40px 15px;
+.btn {
+  display: inline-block;
+  border: none;
+  border-radius: 10px;
+  padding: 13px 17px;
+  background: var(--red);
+  color: white;
+  font-weight: bold;
+}
+
+.btn.secondary {
+  background: #321311;
+  border: 1px solid #67403C;
+}
+
+.btn.full {
+  width: 100%;
+  margin-top: 5px;
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.tabs button { flex: 1; }
+
+.hidden { display: none !important; }
+
+.notice {
+  padding: 12px;
+  border-radius: 9px;
+  margin: 12px 0;
+  background: #2A1715;
+  color: #FFD4CF;
+  overflow-wrap: anywhere;
+}
+
+nav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  gap: 4px;
+  background: #210A08;
+  border-top: 1px solid var(--border);
+  padding: 10px 4px;
+  z-index: 20;
+}
+
+nav button {
+  background: transparent;
+  border: none;
+  color: white;
+  font-size: 12px;
+  padding: 7px 4px;
+}
+
+nav button.active { color: #FF6258; }
+
+.feed-post {
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+  overflow-wrap: anywhere;
+}
+
+.feed-post:last-child { border-bottom: none; }
+
+.badge {
+  display: inline-block;
+  color: #FF8C83;
+  border: 1px solid var(--border);
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 12px;
 }
 
 footer {
   text-align: center;
   color: var(--muted);
-  padding: 24px;
-  border-top: 1px solid var(--border);
-  font-size: 13px;
-}
-
-.notice {
   font-size: 12px;
-  margin-top: 10px;
-}
-
-@media (max-width: 900px) {
-  .layout {
-    grid-template-columns: 180px minmax(0, 1fr);
-  }
-  .rightbar {
-    display: none;
-  }
-}
-
-@media (max-width: 600px) {
-  header {
-    padding: 12px 15px;
-    flex-wrap: wrap;
-  }
-  .logo {
-    font-size: 22px;
-  }
-  header nav {
-    width: 100%;
-    overflow-x: auto;
-    gap: 9px;
-  }
-  header nav button {
-    white-space: nowrap;
-  }
-  .layout {
-    display: block;
-    padding: 17px 12px 85px;
-  }
-  .sidebar {
-    display: none;
-  }
-  .hero {
-    padding: 22px 17px;
-  }
-  .panel, .post, .composer {
-    padding: 14px;
-  }
+  padding: 20px;
 }
 </style>
 </head>
@@ -365,340 +187,470 @@ footer {
 <body>
 
 <header>
-  <div class="logo">MOBU<span>RIX</span></div>
-  <nav>
-    <button class="active" onclick="showPage('home',this)">Home</button>
-    <button onclick="showPage('discover',this)">Discover</button>
-    <button onclick="showPage('messages',this)">Messages</button>
-    <button onclick="showPage('communities',this)">Communities</button>
-    <button class="primary" onclick="showPage('publish',this)">+ Publish</button>
-  </nav>
+  <div class="brand">MOZA<span>BRIX</span></div>
+  <div class="tagline">MOBURIX · Publish. Connect. Earn.</div>
 </header>
-
-<div class="layout">
-
-<aside class="sidebar">
-  <div class="panel">
-    <h3>Your Space</h3>
-    <button class="side-link active" onclick="showPage('home',this)">🏠 Home Feed</button>
-    <button class="side-link" onclick="showPage('discover',this)">🔎 Discover</button>
-    <button class="side-link" onclick="showPage('publish',this)">✍️ Write Article</button>
-    <button class="side-link" onclick="showPage('messages',this)">💬 Messages</button>
-    <button class="side-link" onclick="showPage('communities',this)">👥 Communities</button>
-    <button class="side-link" onclick="showPage('profile',this)">👤 My Profile</button>
-    <button class="side-link" onclick="showPage('studio',this)">💰 Creator Studio</button>
-  </div>
-
-  <div class="panel">
-    <h3>About MOBURIX</h3>
-    <p style="font-size:13px">
-      A home for ideas, stories, creators, and communities.
-    </p>
-    <span class="tag">Publish</span>
-    <span class="tag">Connect</span>
-    <span class="tag">Earn</span>
-  </div>
-</aside>
 
 <main>
 
-<section id="home" class="page active">
-  <div class="hero">
-    <small>WELCOME TO MOBURIX</small>
-    <h1>Your Voice.<br>Your Community.<br>Your Opportunity.</h1>
-    <p>Share your knowledge, publish your stories, connect with people, and build your creative future.</p>
-    <button class="primary" onclick="showPage('publish')">Start Publishing →</button>
+<section id="welcome" class="card">
+  <span class="badge">YOUR VOICE. YOUR COMMUNITY.</span>
+  <h1 style="margin-top:18px">Welcome to MOBURIX</h1>
+  <p class="muted">
+    A place to publish your ideas, build your audience,
+    connect with people, and grow as a creator.
+  </p>
+
+  <div class="tabs">
+    <button class="btn" id="showLogin">Log in</button>
+    <button class="btn secondary" id="showSignup">Create account</button>
   </div>
 
-  <div class="composer">
-    <div class="avatar">M</div>
-    <button onclick="showPage('publish')">What would you like to publish today?</button>
-  </div>
+  <div id="authMessage" class="notice hidden" role="status"></div>
 
-  <h2 class="section-title">Your Reading Feed</h2>
-  <div id="feed"></div>
+  <form id="loginForm">
+    <h2>Welcome back</h2>
+    <label for="loginEmail">Email address</label>
+    <input id="loginEmail" type="email" autocomplete="email"
+      placeholder="you@example.com" required>
+
+    <label for="loginPassword">Password</label>
+    <input id="loginPassword" type="password"
+      autocomplete="current-password" minlength="6" required>
+
+    <button class="btn full" type="submit">Log in</button>
+    <button class="btn secondary full" type="button" id="forgotPassword">
+      Forgot password?
+    </button>
+  </form>
+
+  <form id="signupForm" class="hidden">
+    <h2>Create your account</h2>
+
+    <label for="signupName">Display name</label>
+    <input id="signupName" type="text" maxlength="60"
+      autocomplete="name" placeholder="Your name" required>
+
+    <label for="signupEmail">Email address</label>
+    <input id="signupEmail" type="email" autocomplete="email"
+      placeholder="you@example.com" required>
+
+    <label for="signupPassword">Create password</label>
+    <input id="signupPassword" type="password"
+      autocomplete="new-password" minlength="8"
+      placeholder="At least 8 characters" required>
+
+    <button class="btn full" type="submit">Create account</button>
+
+    <p class="muted" style="font-size:12px">
+      Use a password you don't use on another website.
+    </p>
+  </form>
 </section>
 
-<section id="discover" class="page">
-  <div class="panel">
-    <h2>Discover Something New 🔎</h2>
-    <p>Explore ideas, stories, knowledge, and creativity.</p>
-    <input class="field" id="search" placeholder="Search publications..." oninput="searchPosts()">
-    <div>
-      <span class="tag">Education</span>
-      <span class="tag">Technology</span>
-      <span class="tag">Stories</span>
-      <span class="tag">Business</span>
-      <span class="tag">Faith</span>
-      <span class="tag">Entertainment</span>
+<section id="dashboard" class="hidden">
+  <div class="card">
+    <span class="badge">YOUR ACCOUNT</span>
+    <h1 id="helloName" style="margin-top:14px">Welcome!</h1>
+    <p class="muted" id="accountEmail"></p>
+    <div id="accountMessage" class="notice hidden" role="status"></div>
+    <button class="btn secondary" id="logoutButton">Log out</button>
+  </div>
+
+  <section id="homeSection" class="card">
+    <h2>Home feed</h2>
+    <p class="muted">
+      You're signed in! The account system is connected.
+      Shared posts will be added in a later development step.
+    </p>
+    <div class="feed-post">
+      <strong>Welcome to MOBURIX</strong>
+      <p class="muted">
+        Publish your ideas. Connect with your community.
+        Build something meaningful.
+      </p>
     </div>
-  </div>
-  <div id="discover-feed" style="margin-top:18px"></div>
-</section>
+  </section>
 
-<section id="publish" class="page">
-  <div class="panel">
-    <h2>✍️ Create a Publication</h2>
-    <p>Share something valuable with the MOBURIX community.</p>
+  <section id="publishSection" class="card hidden">
+    <h2>Create a publication</h2>
+    <p class="muted">
+      This form is a preview. Publishing to a shared feed
+      will be enabled when we add the posts database.
+    </p>
+    <form id="previewPostForm">
+      <label for="postText">What's on your mind?</label>
+      <textarea id="postText" maxlength="2000"
+        placeholder="Share an idea..." required></textarea>
+      <button class="btn full" type="submit">Preview publication</button>
+    </form>
+    <div id="postPreview"></div>
+  </section>
 
-    <label for="author" >Your display name</label>
-    <input id="author" class="field" placeholder="Enter your name">
+  <section id="profileSection" class="card hidden">
+    <h2>Your profile</h2>
+    <form id="profileForm">
+      <label for="profileName">Display name</label>
+      <input id="profileName" maxlength="60" required>
 
-    <label for="title">Publication title</label>
-    <input id="title" class="field" maxlength="180" placeholder="Give your publication a title">
+      <label for="profileUsername">Username</label>
+      <input id="profileUsername" disabled>
 
-    <label for="category">Category</label>
-    <select id="category" class="field">
-      <option>Stories</option>
-      <option>Education</option>
-      <option>Technology</option>
-      <option>Business</option>
-      <option>Faith</option>
-      <option>News</option>
-      <option>Entertainment</option>
-      <option>Other</option>
-    </select>
+      <label for="profileBio">Bio</label>
+      <textarea id="profileBio" maxlength="300"
+        placeholder="Tell people about yourself"></textarea>
 
-    <label for="content">Your publication</label>
-    <textarea id="content" class="field" maxlength="20000" placeholder="Write your article or story here..."></textarea>
+      <button class="btn full" type="submit">Save profile</button>
+    </form>
+    <div id="profileMessage" class="notice hidden" role="status"></div>
+  </section>
 
-    <button class="primary" onclick="publishPost()">Publish Article</button>
-    <p class="notice">Prototype: publications are saved only in this browser on this device. They are not yet shared with other visitors.</p>
-  </div>
-</section>
+  <section id="discoverSection" class="card hidden">
+    <h2>Discover</h2>
+    <p class="muted">
+      Discover creators and communities as these features are built.
+    </p>
+  </section>
 
-<section id="messages" class="page">
-  <div class="panel">
-    <h2>💬 Messages</h2>
-    <div class="empty">
-      <h3>Your conversations will live here.</h3>
-      <p>Private and group messaging will be connected to the backend in a later stage.</p>
-    </div>
-    <p class="notice">Messaging is not yet connected. This page does not send messages.</p>
-  </div>
-</section>
-
-<section id="communities" class="page">
-  <div class="panel">
-    <h2>👥 Communities</h2>
-    <p>Find people who share your interests.</p>
-    <div class="post">
-      <h3>📚 Writers & Storytellers</h3>
-      <p>A future home for writers, poets, and storytellers.</p>
-    </div>
-    <div class="post">
-      <h3>💡 Learning & Ideas</h3>
-      <p>Share useful knowledge and learn from others.</p>
-    </div>
-    <div class="post">
-      <h3>🚀 Business & Creativity</h3>
-      <p>Discuss business, innovation, and creative work.</p>
-    </div>
-    <p class="notice">Community joining and member discussions require backend integration.</p>
-  </div>
-</section>
-
-<section id="profile" class="page">
-  <div class="panel">
-    <h2>👤 My Profile</h2>
-    <div class="avatar" style="width:65px;height:65px">M</div>
-    <h3 style="margin-top:12px">MOBURIX Creator</h3>
-    <p>Share your ideas with the world.</p>
-    <div class="stat"><span>Publications on this device</span><strong id="profile-count">0</strong></div>
-    <button class="primary" onclick="showPage('publish')">Write a publication</button>
-    <p class="notice">This is a local prototype profile, not a registered user account.</p>
-  </div>
-</section>
-
-<section id="studio" class="page">
-  <div class="panel">
-    <h2>💰 Creator Studio</h2>
-    <p>Your future home for creator tools and earnings.</p>
-    <div class="stat"><span>Local publications</span><strong id="studio-count">0</strong></div>
-    <div class="stat"><span>Subscription earnings</span><strong>Not connected</strong></div>
-    <div class="stat"><span>Advertising revenue</span><strong>Not connected</strong></div>
-    <div class="stat"><span>Creator marketplace</span><strong>Coming later</strong></div>
-    <p class="notice">No payments or earnings are processed by this prototype.</p>
-  </div>
+  <section id="messagesSection" class="card hidden">
+    <h2>Messages</h2>
+    <p class="muted">
+      Private messaging is planned for a future development step.
+    </p>
+  </section>
 </section>
 
 </main>
 
-<aside class="rightbar">
-  <div class="panel">
-    <h3>🔥 Popular Topics</h3>
-    <p style="margin-top:10px">#Writing</p>
-    <p>#Technology</p>
-    <p>#PersonalGrowth</p>
-    <p>#Business</p>
-    <p>#Creativity</p>
-  </div>
+<nav id="bottomNav" class="hidden" aria-label="Main navigation">
+  <button class="active" data-section="homeSection">🏠<br>Home</button>
+  <button data-section="discoverSection">🔎<br>Discover</button>
+  <button data-section="publishSection">✍️<br>Publish</button>
+  <button data-section="messagesSection">💬<br>Messages</button>
+  <button data-section="profileSection">👤<br>Profile</button>
+</nav>
 
-  <div class="panel">
-    <h3>✨ Our Vision</h3>
-    <p>A place where every voice can share ideas, build community, and discover new opportunities.</p>
-  </div>
+<footer>MOBURIX · Publish. Connect. Earn.</footer>
 
-  <div class="panel">
-    <h3>💎 Creator Economy</h3>
-    <p>Tools for subscriptions, premium publications, tips, and creator products are planned for future releases.</p>
-  </div>
-</aside>
+<script type="module">
+import { createClient } from
+  'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-</div>
+const SUPABASE_URL = 'https://hvziwdlbwkyesraendzc.supabase.co';
+const SUPABASE_PUBLISHABLE_KEY =
+  'sb_publishable_94PA2EKfsmTE3-KILuaSWw_S5teKuBB';
 
-<footer>
-  <strong>MOBURIX</strong> — Publish. Connect. Earn.<br>
-  <span>Building a home for ideas and creators.</span>
-</footer>
+const supabase = createClient(
+  SUPABASE_URL,
+  SUPABASE_PUBLISHABLE_KEY
+);
 
-<script>
-const starterPosts = [
-  {
-    author: "MOBURIX Team",
-    title: "Welcome to MOBURIX",
-    category: "Announcements",
-    content: "Welcome to MOBURIX — Publish. Connect. Earn. This is the beginning of a new community for readers, writers, storytellers, and creators. Explore the prototype and imagine what you will publish here.",
-    likes: 0
-  },
-  {
-    author: "Community Journal",
-    title: "Why Every Voice Deserves a Place",
-    category: "Ideas",
-    content: "Every great idea begins with someone willing to share it. Publishing helps people exchange knowledge, tell meaningful stories, and connect across communities. MOBURIX aims to make space for those voices.",
-    likes: 0
-  }
-];
+const $ = id => document.getElementById(id);
 
-function loadPosts() {
-  try {
-    const saved = JSON.parse(localStorage.getItem("moburix_posts") || "[]");
-    return [...saved, ...starterPosts];
-  } catch (e) {
-    return starterPosts.slice();
-  }
+function showMessage(id, message) {
+  const box = $(id);
+  box.textContent = message;
+  box.classList.remove('hidden');
 }
 
-function saveUserPosts(posts) {
-  try {
-    localStorage.setItem("moburix_posts", JSON.stringify(posts));
-  } catch (e) {
-    alert("Unable to save on this device. Your browser storage may be full.");
-  }
+function clearMessage(id) {
+  $(id).textContent = '';
+  $(id).classList.add('hidden');
 }
 
-function renderPosts(targetId, posts) {
-  const target = document.getElementById(targetId);
-  if (!posts.length) {
-    target.innerHTML = '<div class="panel"><p>No publications found.</p></div>';
-    return;
-  }
-
-  target.innerHTML = posts.map((post, index) => `
-    <article class="post">
-      <div class="post-head">
-        <div class="avatar">${escapeHTML((post.author || "M").charAt(0).toUpperCase())}</div>
-        <div>
-          <h3>${escapeHTML(post.author)}</h3>
-          <small>${escapeHTML(post.category)} · Prototype publication</small>
-        </div>
-      </div>
-      <h2>${escapeHTML(post.title)}</h2>
-      <div class="post-content">${escapeHTML(post.content)}</div>
-      <div class="post-actions">
-        <button onclick="likePost(this)">♡ Like (${Number(post.likes) || 0})</button>
-        <button onclick="sharePost('${escapeJS(post.title)}')">↗ Share</button>
-      </div>
-    </article>
-  `).join("");
+function readableError(error) {
+  const message = error?.message || 'Something went wrong.';
+  return message.length > 240 ? message.slice(0, 240) : message;
 }
 
-function escapeHTML(value) {
-  return String(value || "").replace(/[&<>"']/g, c => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;",
-    '"': "&quot;", "'": "&#39;"
-  }[c]));
+function setAuthMode(mode) {
+  const signup = mode === 'signup';
+  $('loginForm').classList.toggle('hidden', signup);
+  $('signupForm').classList.toggle('hidden', !signup);
+  clearMessage('authMessage');
 }
 
-function escapeJS(value) {
-  return String(value || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
-}
+$('showLogin').addEventListener('click', () => setAuthMode('login'));
+$('showSignup').addEventListener('click', () => setAuthMode('signup'));
 
-function publishPost() {
-  const author = document.getElementById("author").value.trim();
-  const title = document.getElementById("title").value.trim();
-  const category = document.getElementById("category").value;
-  const content = document.getElementById("content").value.trim();
+function showSection(sectionId) {
+  document.querySelectorAll(
+    '#dashboard > section'
+  ).forEach(section => section.classList.add('hidden'));
 
-  if (!author || !title || !content) {
-    alert("Please enter your display name, publication title, and content.");
-    return;
-  }
+  $(sectionId).classList.remove('hidden');
 
-  const saved = JSON.parse(localStorage.getItem("moburix_posts") || "[]");
-  saved.unshift({
-    author, title, category, content, likes: 0,
-    createdAt: new Date().toISOString()
+  document.querySelectorAll('#bottomNav button').forEach(button => {
+    button.classList.toggle(
+      'active',
+      button.dataset.section === sectionId
+    );
   });
-  saveUserPosts(saved);
-
-  document.getElementById("title").value = "";
-  document.getElementById("content").value = "";
-  renderAll();
-  showPage("home");
-  alert("Your publication has been saved in this browser.");
 }
 
-function renderAll() {
-  const posts = loadPosts();
-  renderPosts("feed", posts);
-  renderPosts("discover-feed", posts);
-  const count = posts.length - starterPosts.length;
-  document.getElementById("profile-count").textContent = count;
-  document.getElementById("studio-count").textContent = count;
-}
+document.querySelectorAll('#bottomNav button').forEach(button => {
+  button.addEventListener('click', () => {
+    showSection(button.dataset.section);
+  });
+});
 
-function showPage(id, button) {
-  document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
-  const target = document.getElementById(id);
-  if (target) target.classList.add("active");
+async function loadProfile(user) {
+  let { data: profile, error } = await supabase
+    .from('profiles')
+    .select('username, display_name, bio')
+    .eq('id', user.id)
+    .maybeSingle();
 
-  document.querySelectorAll("nav button, .side-link").forEach(b => b.classList.remove("active"));
-  if (button) button.classList.add("active");
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function searchPosts() {
-  const query = document.getElementById("search").value.toLowerCase().trim();
-  const posts = loadPosts().filter(p =>
-    (p.title + " " + p.content + " " + p.author + " " + p.category)
-      .toLowerCase().includes(query)
-  );
-  renderPosts("discover-feed", posts);
-}
-
-function likePost(button) {
-  button.textContent = button.textContent.startsWith("♡")
-    ? button.textContent.replace("♡", "♥")
-    : button.textContent.replace("♥", "♡");
-}
-
-async function sharePost(title) {
-  try {
-    if (navigator.share) {
-      await navigator.share({ title, text: "Read this on MOBURIX" });
-    } else {
-      await navigator.clipboard.writeText(title);
-      alert("Publication title copied.");
-    }
-  } catch (e) {
-    // The user may cancel the share dialog.
+  if (error) {
+    console.error('Profile read error:', error);
   }
+
+  if (!profile) {
+    const emailName = (user.email || 'moburix_user')
+      .split('@')[0]
+      .toLowerCase()
+      .replace(/[^a-z0-9_]/g, '')
+      .slice(0, 20) || 'moburix_user';
+
+    const username = emailName + '_' +
+      user.id.replaceAll('-', '').slice(0, 8);
+
+    const { data: created, error: createError } = await supabase
+      .from('profiles')
+      .insert({
+        id: user.id,
+        username,
+        display_name:
+          user.user_metadata?.display_name || 'MOBURIX User'
+      })
+      .select('username, display_name, bio')
+      .single();
+
+    if (createError) {
+      console.error('Profile creation error:', createError);
+      showMessage(
+        'accountMessage',
+        'Your account is signed in, but the profile could not load. ' +
+        readableError(createError)
+      );
+    } else {
+      profile = created;
+    }
+  }
+
+  $('profileName').value =
+    profile?.display_name || user.user_metadata?.display_name || '';
+
+  $('profileUsername').value = profile?.username || 'Not available';
+  $('profileBio').value = profile?.bio || '';
 }
 
-renderAll();
+async function renderSession(session) {
+  const signedIn = Boolean(session?.user);
+
+  $('welcome').classList.toggle('hidden', signedIn);
+  $('dashboard').classList.toggle('hidden', !signedIn);
+  $('bottomNav').classList.toggle('hidden', !signedIn);
+
+  if (!signedIn) return;
+
+  const user = session.user;
+
+  $('helloName').textContent =
+    'Welcome, ' + (user.user_metadata?.display_name || 'Creator') + '!';
+
+  $('accountEmail').textContent = user.email || '';
+
+  clearMessage('accountMessage');
+  await loadProfile(user);
+  showSection('homeSection');
+}
+
+$('signupForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('authMessage');
+
+  const name = $('signupName').value.trim();
+  const email = $('signupEmail').value.trim();
+  const password = $('signupPassword').value;
+
+  if (!name) {
+    showMessage('authMessage', 'Please enter your display name.');
+    return;
+  }
+
+  const button = $('signupForm').querySelector('button[type="submit"]');
+  button.disabled = true;
+  button.textContent = 'Creating account...';
+
+  try {
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: {
+        data: { display_name: name },
+        emailRedirectTo: window.location.origin
+      }
+    });
+
+    if (error) throw error;
+
+    if (data.session) {
+      await renderSession(data.session);
+    } else {
+      showMessage(
+        'authMessage',
+        'Registration received! Check your email for a confirmation link. ' +
+        'If confirmation is disabled, try logging in.'
+      );
+    }
+  } catch (error) {
+    showMessage('authMessage', readableError(error));
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Create account';
+  }
+});
+
+$('loginForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('authMessage');
+
+  const button = $('loginForm').querySelector('button[type="submit"]');
+  button.disabled = true;
+  button.textContent = 'Logging in...';
+
+  try {
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: $('loginEmail').value.trim(),
+      password: $('loginPassword').value
+    });
+
+    if (error) throw error;
+
+    await renderSession(data.session);
+  } catch (error) {
+    showMessage('authMessage', readableError(error));
+  } finally {
+    button.disabled = false;
+    button.textContent = 'Log in';
+  }
+});
+
+$('forgotPassword').addEventListener('click', async () => {
+  clearMessage('authMessage');
+
+  const email = $('loginEmail').value.trim();
+
+  if (!email) {
+    showMessage(
+      'authMessage',
+      'Enter your email address above first, then tap Forgot password.'
+    );
+    return;
+  }
+
+  try {
+    const { error } = await supabase.auth.resetPasswordForEmail(email, {
+      redirectTo: window.location.origin
+    });
+
+    if (error) throw error;
+
+    showMessage(
+      'authMessage',
+      'If this email belongs to an account, a password-reset email will be sent.'
+    );
+  } catch (error) {
+    showMessage('authMessage', readableError(error));
+  }
+});
+
+$('logoutButton').addEventListener('click', async () => {
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    showMessage('accountMessage', readableError(error));
+    return;
+  }
+
+  setAuthMode('login');
+  await renderSession(null);
+});
+
+$('profileForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('profileMessage');
+
+  const { data: { user }, error: userError } =
+    await supabase.auth.getUser();
+
+  if (userError || !user) {
+    showMessage('profileMessage', 'Please log in again.');
+    return;
+  }
+
+  const displayName = $('profileName').value.trim();
+  const bio = $('profileBio').value.trim();
+
+  if (!displayName) {
+    showMessage('profileMessage', 'Display name cannot be empty.');
+    return;
+  }
+
+  const { error } = await supabase
+    .from('profiles')
+    .update({
+      display_name: displayName,
+      bio,
+      updated_at: new Date().toISOString()
+    })
+    .eq('id', user.id);
+
+  if (error) {
+    showMessage('profileMessage', readableError(error));
+    return;
+  }
+
+  $('helloName').textContent = 'Welcome, ' + displayName + '!';
+  showMessage('profileMessage', 'Profile saved successfully!');
+});
+
+$('previewPostForm').addEventListener('submit', event => {
+  event.preventDefault();
+
+  const post = document.createElement('div');
+  post.className = 'feed-post';
+
+  const title = document.createElement('strong');
+  title.textContent = 'Your preview';
+
+  const content = document.createElement('p');
+  content.textContent = $('postText').value.trim();
+
+  const note = document.createElement('small');
+  note.className = 'muted';
+  note.textContent = 'Preview only — not shared with other users.';
+
+  post.append(title, content, note);
+  $('postPreview').replaceChildren(post);
+  $('postText').value = '';
+});
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'INITIAL_SESSION') return;
+  setTimeout(() => renderSession(session), 0);
+});
+
+const { data: { session }, error: sessionError } =
+  await supabase.auth.getSession();
+
+if (sessionError) {
+  console.error('Session check error:', sessionError);
+}
+
+await renderSession(session);
 </script>
 
 </body>
-  </html>
+</html>
