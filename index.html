@@ -3,22 +3,19 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="theme-color" content="#590d09">
-
+<meta name="theme-color" content="#2A0A08">
+<meta name="description" content="MOBURIX — Publish. Connect. Earn.">
 <title>MOBURIX — Publish. Connect. Earn.</title>
-
-<meta name="description" content="MOBURIX is a social publishing community for readers, writers, and creators.">
 
 <style>
 :root {
-  --red: #a10f08;
-  --red-light: #e52a20;
-  --burgundy: #590d09;
-  --dark: #220907;
-  --card: #35100d;
-  --white: #ffffff;
-  --muted: #c6a9a5;
-  --border: rgba(255,255,255,.10);
+  --red: #A10F08;
+  --burgundy: #590D09;
+  --background: #2A0A08;
+  --card: #3B1110;
+  --white: #FFFFFF;
+  --muted: #D2B8B6;
+  --border: #64201B;
 }
 
 * {
@@ -28,11 +25,10 @@
 }
 
 body {
-  background: linear-gradient(135deg, #790e08, #390b08 55%, #210807);
-  background-attachment: fixed;
+  background: var(--background);
   color: var(--white);
-  font-family: Arial, Helvetica, sans-serif;
-  min-height: 100vh;
+  font-family: Arial, sans-serif;
+  line-height: 1.6;
 }
 
 button, input, textarea {
@@ -43,17 +39,11 @@ button {
   cursor: pointer;
 }
 
-button:focus-visible, a:focus-visible,
-input:focus-visible, textarea:focus-visible {
-  outline: 2px solid #ff8b82;
-  outline-offset: 3px;
-}
-
 header {
   position: sticky;
   top: 0;
   z-index: 10;
-  background: rgba(35, 7, 5, .96);
+  background: #220706;
   border-bottom: 1px solid var(--border);
   padding: 15px 5%;
   display: flex;
@@ -65,450 +55,308 @@ header {
 .logo {
   font-size: 25px;
   font-weight: 900;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 
 .logo span {
-  color: #ff655b;
+  color: #FF5147;
 }
 
-.tagline {
-  font-size: 11px;
-  color: var(--muted);
-  margin-top: 4px;
-}
-
-.header-actions {
+header nav {
   display: flex;
-  gap: 8px;
+  gap: 16px;
+  align-items: center;
 }
 
-.btn {
-  border: 0;
-  border-radius: 9px;
-  padding: 11px 15px;
-  font-weight: bold;
+nav button, .text-button {
+  background: none;
+  border: none;
+  color: var(--muted);
+  padding: 7px;
+}
+
+nav button:hover, nav button.active {
   color: white;
-  background: linear-gradient(135deg, var(--red-light), var(--red));
 }
 
-.btn-outline {
-  background: transparent;
-  border: 1px solid rgba(255,255,255,.3);
+.primary {
+  background: linear-gradient(135deg, var(--red), #D72B21);
+  color: white;
+  border: none;
+  padding: 11px 17px;
+  border-radius: 9px;
+  font-weight: bold;
 }
 
 .layout {
+  max-width: 1200px;
+  margin: auto;
+  padding: 28px 18px 80px;
   display: grid;
   grid-template-columns: 200px minmax(0, 1fr) 245px;
   gap: 22px;
-  max-width: 1400px;
-  padding: 25px 4%;
-  margin: auto;
 }
 
 .sidebar, .rightbar {
-  position: sticky;
-  top: 90px;
-  align-self: start;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
 }
 
-.nav-item {
+.panel, .post, .hero, .composer {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 15px;
+  padding: 18px;
+}
+
+.side-link {
+  display: block;
   width: 100%;
-  padding: 13px;
-  margin-bottom: 7px;
-  border: 1px solid transparent;
-  border-radius: 10px;
-  background: transparent;
-  color: #ead7d4;
   text-align: left;
-  font-size: 14px;
-}
-
-.nav-item:hover, .nav-item.active {
-  background: rgba(229,42,32,.18);
-  border-color: rgba(229,42,32,.35);
-  color: white;
-}
-
-.sidebar-note {
+  padding: 12px;
+  margin: 3px 0;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
-  margin: 22px 10px;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
 }
 
-main {
-  min-width: 0;
+.side-link:hover, .side-link.active {
+  background: var(--burgundy);
+  color: white;
 }
 
 .hero {
   padding: 27px;
-  border: 1px solid var(--border);
-  border-radius: 17px;
-  background: linear-gradient(125deg, rgba(190,25,17,.55), rgba(48,9,7,.9));
   margin-bottom: 20px;
+  background: linear-gradient(130deg, #72120D, #350B0A 75%);
 }
 
-.eyebrow {
-  color: #ff958d;
-  font-size: 11px;
+.hero small {
+  color: #FFC0BB;
+  font-weight: bold;
   letter-spacing: 2px;
-  font-weight: bold;
-  margin-bottom: 12px;
 }
 
-.hero h1 {
-  font-size: clamp(27px, 4vw, 39px);
-  line-height: 1.15;
-  margin-bottom: 12px;
+h1 {
+  font-size: clamp(28px, 5vw, 42px);
+  line-height: 1.2;
+  margin: 12px 0;
 }
 
-.hero p {
-  color: #e8cdca;
-  line-height: 1.7;
-  font-size: 14px;
-  max-width: 480px;
-}
-
-.hero .btn {
-  margin-top: 20px;
-}
-
-.section-heading {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 10px;
-  margin: 25px 0 15px;
-}
-
-.section-heading h2 {
-  font-size: 19px;
-}
-
-.section-heading span {
-  font-size: 12px;
-  color: var(--muted);
-}
-
-.composer, .post, .panel, .feature-card {
-  background: rgba(35, 9, 7, .78);
-  border: 1px solid var(--border);
-  border-radius: 13px;
-}
-
-.composer {
-  padding: 17px;
-  margin-bottom: 20px;
-}
-
-.composer-row {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-}
-
-.avatar {
-  width: 43px;
-  height: 43px;
-  border-radius: 50%;
-  flex-shrink: 0;
-  display: grid;
-  place-items: center;
-  font-weight: bold;
-  background: linear-gradient(135deg, #f24b40, #750d08);
-}
-
-.fake-input {
-  flex: 1;
-  min-width: 0;
-  border: 1px solid var(--border);
-  background: rgba(255,255,255,.05);
-  color: #d5b9b5;
-  text-align: left;
-  border-radius: 25px;
-  padding: 13px 16px;
-}
-
-.post {
-  padding: 20px;
-  margin-bottom: 16px;
-}
-
-.post-author {
-  display: flex;
-  align-items: center;
-  gap: 11px;
-  margin-bottom: 17px;
-}
-
-.author-name {
-  font-size: 14px;
-  font-weight: bold;
-}
-
-.author-meta {
-  color: var(--muted);
-  font-size: 11px;
-  margin-top: 5px;
-}
-
-.post h3 {
-  font-size: 19px;
-  line-height: 1.4;
+h2 {
+  font-size: 20px;
   margin-bottom: 10px;
 }
 
-.post p {
-  color: #e0c9c6;
-  font-size: 14px;
-  line-height: 1.8;
-  white-space: pre-wrap;
-  overflow-wrap: anywhere;
+h3 {
+  font-size: 16px;
+  margin-bottom: 7px;
 }
 
-.post-tag {
-  display: inline-block;
-  color: #ff928a;
-  background: rgba(229,42,32,.12);
-  padding: 6px 10px;
-  border-radius: 6px;
-  margin-top: 14px;
-  font-size: 11px;
+p {
+  color: var(--muted);
+}
+
+.hero p {
+  max-width: 480px;
+  margin-bottom: 18px;
+}
+
+.section-title {
+  margin: 22px 0 13px;
+}
+
+.composer {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.avatar {
+  width: 42px;
+  height: 42px;
+  min-width: 42px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(135deg, var(--red), #8C3B35);
+  border-radius: 50%;
+  font-weight: bold;
+}
+
+.composer button {
+  flex: 1;
+  text-align: left;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  background: #2A0A08;
+  border-radius: 30px;
+  padding: 11px 15px;
+}
+
+.post {
+  margin-bottom: 16px;
+}
+
+.post-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+}
+
+.post-head small {
+  color: var(--muted);
+}
+
+.post-content {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin-bottom: 15px;
 }
 
 .post-actions {
   display: flex;
-  gap: 9px;
   flex-wrap: wrap;
+  gap: 9px;
   border-top: 1px solid var(--border);
-  padding-top: 14px;
-  margin-top: 18px;
+  padding-top: 12px;
 }
 
-.action-btn {
-  border: 1px solid var(--border);
-  color: #e7cfcc;
+.post-actions button {
   background: transparent;
-  padding: 9px 11px;
-  border-radius: 8px;
-  font-size: 12px;
-}
-
-.action-btn:hover, .action-btn.liked {
-  background: rgba(229,42,32,.18);
-  color: white;
-}
-
-.panel {
-  padding: 18px;
-  margin-bottom: 16px;
-}
-
-.panel h3 {
-  font-size: 15px;
-  margin-bottom: 15px;
-}
-
-.panel p {
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.8;
+  border: none;
+  padding: 5px;
+}
+
+.post-actions button:hover {
+  color: #FF756D;
 }
 
 .stat {
   display: flex;
   justify-content: space-between;
-  padding: 11px 0;
-  border-bottom: 1px solid var(--border);
-  font-size: 12px;
-}
-
-.stat:last-child {
-  border: 0;
-}
-
-.stat span:last-child {
-  font-weight: bold;
-}
-
-.feature-card {
-  padding: 15px;
-  margin-bottom: 10px;
-}
-
-.feature-card h3 {
-  font-size: 14px;
-  margin-bottom: 8px;
-}
-
-.feature-card p {
+  padding: 8px 0;
   color: var(--muted);
-  font-size: 12px;
-  line-height: 1.7;
 }
 
-.screen {
+.stat strong {
+  color: white;
+}
+
+.tag {
+  display: inline-block;
+  padding: 5px 9px;
+  background: #53130F;
+  border-radius: 20px;
+  color: #FFD4D0;
+  margin: 4px 3px 0 0;
+  font-size: 12px;
+}
+
+.creator {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 13px 0;
+}
+
+.creator .avatar {
+  width: 35px;
+  height: 35px;
+  min-width: 35px;
+}
+
+.creator p {
+  font-size: 12px;
+}
+
+.full {
+  width: 100%;
+  margin-top: 12px;
+}
+
+.page {
   display: none;
 }
 
-.screen.active {
+.page.active {
   display: block;
-}
-
-.form-card {
-  background: rgba(35,9,7,.85);
-  border: 1px solid var(--border);
-  border-radius: 15px;
-  padding: 22px;
-  margin-bottom: 18px;
-}
-
-.form-card h2 {
-  margin-bottom: 10px;
-}
-
-.form-card > p {
-  color: var(--muted);
-  font-size: 13px;
-  line-height: 1.7;
-  margin-bottom: 20px;
-}
-
-label {
-  display: block;
-  font-size: 13px;
-  margin-bottom: 7px;
 }
 
 .field {
-  margin-bottom: 17px;
-}
-
-input, textarea, select {
   width: 100%;
-  border: 1px solid rgba(255,255,255,.17);
-  background: #260907;
-  color: white;
+  padding: 12px;
+  margin: 8px 0 14px;
   border-radius: 8px;
-  padding: 12px;
+  border: 1px solid var(--border);
+  background: #260807;
+  color: white;
 }
 
-textarea {
-  min-height: 150px;
+textarea.field {
+  min-height: 140px;
   resize: vertical;
-  line-height: 1.7;
 }
 
-input::placeholder, textarea::placeholder {
-  color: #a88a86;
-}
-
-.notice {
-  border-left: 3px solid #e52a20;
-  padding: 12px;
-  background: rgba(229,42,32,.09);
-  color: #e8ceca;
-  font-size: 12px;
-  line-height: 1.8;
-  margin-bottom: 18px;
-}
-
-.empty-state {
+.empty {
   text-align: center;
-  padding: 35px 15px;
-  color: var(--muted);
-  line-height: 1.8;
+  padding: 40px 15px;
 }
 
 footer {
   text-align: center;
-  padding: 25px 15px 95px;
-  color: #c7a5a0;
-  font-size: 11px;
+  color: var(--muted);
+  padding: 24px;
   border-top: 1px solid var(--border);
+  font-size: 13px;
 }
 
-.mobile-nav {
-  display: none;
+.notice {
+  font-size: 12px;
+  margin-top: 10px;
 }
 
-@media (max-width: 1000px) {
+@media (max-width: 900px) {
   .layout {
-    grid-template-columns: 175px minmax(0, 1fr);
+    grid-template-columns: 180px minmax(0, 1fr);
   }
-
   .rightbar {
     display: none;
   }
 }
 
-@media (max-width: 650px) {
+@media (max-width: 600px) {
   header {
-    padding: 13px 4%;
+    padding: 12px 15px;
+    flex-wrap: wrap;
   }
-
   .logo {
-    font-size: 21px;
+    font-size: 22px;
   }
-
-  .tagline {
-    font-size: 10px;
+  header nav {
+    width: 100%;
+    overflow-x: auto;
+    gap: 9px;
   }
-
-  .header-actions .btn-outline {
-    display: none;
+  header nav button {
+    white-space: nowrap;
   }
-
-  .header-actions .btn {
-    padding: 10px;
-    font-size: 12px;
-  }
-
   .layout {
     display: block;
-    padding: 17px 13px 25px;
+    padding: 17px 12px 85px;
   }
-
   .sidebar {
     display: none;
   }
-
   .hero {
-    padding: 22px 18px;
+    padding: 22px 17px;
   }
-
-  .post {
-    padding: 16px;
-  }
-
-  .mobile-nav {
-    position: fixed;
-    display: flex;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    z-index: 20;
-    justify-content: space-around;
-    background: #230806;
-    border-top: 1px solid var(--border);
-    padding: 9px 3px calc(9px + env(safe-area-inset-bottom));
-  }
-
-  .mobile-nav button {
-    border: 0;
-    background: transparent;
-    color: #d9bfbb;
-    font-size: 10px;
-    padding: 5px 2px;
-  }
-
-  .mobile-nav button.active {
-    color: #ff7168;
-  }
-
-  footer {
-    padding-bottom: 100px;
+  .panel, .post, .composer {
+    padding: 14px;
   }
 }
 </style>
@@ -517,536 +365,340 @@ footer {
 <body>
 
 <header>
-  <div>
-    <div class="logo">MOBU<span>RIX</span></div>
-    <div class="tagline">Publish. Connect. Earn.</div>
-  </div>
-
-  <div class="header-actions">
-    <button class="btn btn-outline" onclick="showScreen('discover')">
-      Discover
-    </button>
-    <button class="btn" onclick="showScreen('publish')">
-      + Publish
-    </button>
-  </div>
+  <div class="logo">MOBU<span>RIX</span></div>
+  <nav>
+    <button class="active" onclick="showPage('home',this)">Home</button>
+    <button onclick="showPage('discover',this)">Discover</button>
+    <button onclick="showPage('messages',this)">Messages</button>
+    <button onclick="showPage('communities',this)">Communities</button>
+    <button class="primary" onclick="showPage('publish',this)">+ Publish</button>
+  </nav>
 </header>
 
 <div class="layout">
 
-  <aside class="sidebar">
-    <button class="nav-item active" data-screen="home"
-      onclick="showScreen('home')">🏠 &nbsp; Home</button>
+<aside class="sidebar">
+  <div class="panel">
+    <h3>Your Space</h3>
+    <button class="side-link active" onclick="showPage('home',this)">🏠 Home Feed</button>
+    <button class="side-link" onclick="showPage('discover',this)">🔎 Discover</button>
+    <button class="side-link" onclick="showPage('publish',this)">✍️ Write Article</button>
+    <button class="side-link" onclick="showPage('messages',this)">💬 Messages</button>
+    <button class="side-link" onclick="showPage('communities',this)">👥 Communities</button>
+    <button class="side-link" onclick="showPage('profile',this)">👤 My Profile</button>
+    <button class="side-link" onclick="showPage('studio',this)">💰 Creator Studio</button>
+  </div>
 
-    <button class="nav-item" data-screen="discover"
-      onclick="showScreen('discover')">🔎 &nbsp; Discover</button>
+  <div class="panel">
+    <h3>About MOBURIX</h3>
+    <p style="font-size:13px">
+      A home for ideas, stories, creators, and communities.
+    </p>
+    <span class="tag">Publish</span>
+    <span class="tag">Connect</span>
+    <span class="tag">Earn</span>
+  </div>
+</aside>
 
-    <button class="nav-item" data-screen="publish"
-      onclick="showScreen('publish')">✍️ &nbsp; Publish</button>
+<main>
 
-    <button class="nav-item" data-screen="communities"
-      onclick="showScreen('communities')">👥 &nbsp; Communities</button>
+<section id="home" class="page active">
+  <div class="hero">
+    <small>WELCOME TO MOBURIX</small>
+    <h1>Your Voice.<br>Your Community.<br>Your Opportunity.</h1>
+    <p>Share your knowledge, publish your stories, connect with people, and build your creative future.</p>
+    <button class="primary" onclick="showPage('publish')">Start Publishing →</button>
+  </div>
 
-    <button class="nav-item" data-screen="messages"
-      onclick="showScreen('messages')">💬 &nbsp; Messages</button>
+  <div class="composer">
+    <div class="avatar">M</div>
+    <button onclick="showPage('publish')">What would you like to publish today?</button>
+  </div>
 
-    <button class="nav-item" data-screen="profile"
-      onclick="showScreen('profile')">👤 &nbsp; My Profile</button>
+  <h2 class="section-title">Your Reading Feed</h2>
+  <div id="feed"></div>
+</section>
 
-    <button class="nav-item" data-screen="creator"
-      onclick="showScreen('creator')">💰 &nbsp; Creator Studio</button>
-
-    <div class="sidebar-note">
-      A place for every voice.<br>
-      Share your ideas, discover stories, and build your community.
+<section id="discover" class="page">
+  <div class="panel">
+    <h2>Discover Something New 🔎</h2>
+    <p>Explore ideas, stories, knowledge, and creativity.</p>
+    <input class="field" id="search" placeholder="Search publications..." oninput="searchPosts()">
+    <div>
+      <span class="tag">Education</span>
+      <span class="tag">Technology</span>
+      <span class="tag">Stories</span>
+      <span class="tag">Business</span>
+      <span class="tag">Faith</span>
+      <span class="tag">Entertainment</span>
     </div>
-  </aside>
+  </div>
+  <div id="discover-feed" style="margin-top:18px"></div>
+</section>
 
-  <main>
+<section id="publish" class="page">
+  <div class="panel">
+    <h2>✍️ Create a Publication</h2>
+    <p>Share something valuable with the MOBURIX community.</p>
 
-    <section class="screen active" id="home">
-      <div class="hero">
-        <div class="eyebrow">WELCOME TO MOBURIX</div>
-        <h1>Your voice.<br>Your community.<br>Your opportunity.</h1>
-        <p>
-          Discover fresh ideas, share your knowledge, publish your stories,
-          and connect with people who care about what you create.
-        </p>
-        <button class="btn" onclick="showScreen('publish')">
-          Start Publishing →
-        </button>
-      </div>
+    <label for="author" >Your display name</label>
+    <input id="author" class="field" placeholder="Enter your name">
 
-      <div class="composer">
-        <div class="composer-row">
-          <div class="avatar">M</div>
-          <button class="fake-input" onclick="showScreen('publish')">
-            What would you like to publish today?
-          </button>
-        </div>
-      </div>
+    <label for="title">Publication title</label>
+    <input id="title" class="field" maxlength="180" placeholder="Give your publication a title">
 
-      <div class="section-heading">
-        <h2>Latest Publications</h2>
-        <span>Community feed</span>
-      </div>
+    <label for="category">Category</label>
+    <select id="category" class="field">
+      <option>Stories</option>
+      <option>Education</option>
+      <option>Technology</option>
+      <option>Business</option>
+      <option>Faith</option>
+      <option>News</option>
+      <option>Entertainment</option>
+      <option>Other</option>
+    </select>
 
-      <div id="feed">
-        <article class="post">
-          <div class="post-author">
-            <div class="avatar">M</div>
-            <div>
-              <div class="author-name">MOBURIX Editorial</div>
-              <div class="author-meta">Welcome publication · Sample content</div>
-            </div>
-          </div>
-          <h3>Welcome to a New World of Publishing</h3>
-          <p>
-            Every great idea starts with a voice willing to share it.
+    <label for="content">Your publication</label>
+    <textarea id="content" class="field" maxlength="20000" placeholder="Write your article or story here..."></textarea>
 
-            MOBURIX is being built as a home for writers, readers,
-            storytellers, educators, and creators. Our vision is to help
-            people publish meaningful work, build communities, and explore
-            new opportunities.
+    <button class="primary" onclick="publishPost()">Publish Article</button>
+    <p class="notice">Prototype: publications are saved only in this browser on this device. They are not yet shared with other visitors.</p>
+  </div>
+</section>
 
-            This is only the beginning. Your story deserves a place.
-          </p>
-          <span class="post-tag">#WelcomeToMOBURIX</span>
-          <div class="post-actions">
-            <button class="action-btn" onclick="likePost(this)">♡ Like <span>0</span></button>
-            <button class="action-btn" onclick="alert('Comments will be connected to the backend in a later stage.')">💬 Comment</button>
-            <button class="action-btn" onclick="sharePost()">↗ Share</button>
-          </div>
-        </article>
-
-        <article class="post">
-          <div class="post-author">
-            <div class="avatar">C</div>
-            <div>
-              <div class="author-name">Creator Community</div>
-              <div class="author-meta">Featured example · Sample content</div>
-            </div>
-          </div>
-          <h3>Your Ideas Can Make a Difference</h3>
-          <p>
-            Knowledge becomes more powerful when we share it. Whether
-            you write stories, teach a skill, share news, or explore
-            creative ideas, your perspective can inspire someone.
-          </p>
-          <span class="post-tag">#Creativity #Community</span>
-          <div class="post-actions">
-            <button class="action-btn" onclick="likePost(this)">♡ Like <span>0</span></button>
-            <button class="action-btn" onclick="alert('Comments will be connected to the backend in a later stage.')">💬 Comment</button>
-            <button class="action-btn" onclick="sharePost()">↗ Share</button>
-          </div>
-        </article>
-      </div>
-    </section>
-
-    <section class="screen" id="discover">
-      <div class="section-heading">
-        <h2>Discover</h2>
-        <span>Find your next read</span>
-      </div>
-
-      <div class="form-card">
-        <label for="search">Search publications</label>
-        <input id="search" type="search"
-          placeholder="Search titles and articles..."
-          oninput="searchPosts(this.value)">
-      </div>
-
-      <div class="feature-card">
-        <h3>📰 News & Current Affairs</h3>
-        <p>Discover reporting, analysis, and perspectives.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>📚 Stories & Literature</h3>
-        <p>Explore fiction, poetry, personal stories, and books.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>🎓 Education & Knowledge</h3>
-        <p>Learn skills and discover new ideas.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>🎨 Creativity & Entertainment</h3>
-        <p>Explore art, culture, and creative work.</p>
-      </div>
-
-      <div id="searchResults"></div>
-    </section>
-
-    <section class="screen" id="publish">
-      <div class="form-card">
-        <h2>Create a Publication ✍️</h2>
-        <p>
-          Share an idea, story, article, lesson, or experience with
-          the MOBURIX community.
-        </p>
-
-        <div class="notice">
-          Prototype mode: publications created here appear in this browser
-          only. Online publishing will be enabled when we connect the backend.
-        </div>
-
-        <form id="publishForm">
-          <div class="field">
-            <label for="author">Author name</label>
-            <input id="author" maxlength="60" required
-              placeholder="Enter your display name">
-          </div>
-
-          <div class="field">
-            <label for="title">Publication title</label>
-            <input id="title" maxlength="150" required
-              placeholder="Give your publication a title">
-          </div>
-
-          <div class="field">
-            <label for="category">Category</label>
-            <select id="category">
-              <option>General</option>
-              <option>News</option>
-              <option>Education</option>
-              <option>Stories</option>
-              <option>Religion & Faith</option>
-              <option>Technology</option>
-              <option>Business</option>
-              <option>Entertainment</option>
-              <option>Health & Lifestyle</option>
-              <option>Art & Creativity</option>
-              <option>Poetry</option>
-            </select>
-          </div>
-
-          <div class="field">
-            <label for="content">Your publication</label>
-            <textarea id="content" maxlength="15000" required
-              placeholder="Start writing your publication here..."></textarea>
-          </div>
-
-          <button class="btn" type="submit">Publish on This Demo</button>
-        </form>
-      </div>
-    </section>
-
-    <section class="screen" id="communities">
-      <div class="section-heading">
-        <h2>Communities</h2>
-      </div>
-
-      <div class="notice">
-        Community creation, membership, and group discussions will be
-        enabled after we connect the database and user accounts.
-      </div>
-
-      <div class="feature-card">
-        <h3>📚 Writers & Readers</h3>
-        <p>A future community for storytelling, writing tips, and reading.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>🎓 Learning Together</h3>
-        <p>A space for sharing knowledge, tutorials, and educational ideas.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>💡 Entrepreneurs & Creators</h3>
-        <p>Connect with people building businesses and creative projects.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>🌍 Open Conversations</h3>
-        <p>Discuss everyday topics and discover different perspectives.</p>
-      </div>
-    </section>
-
-    <section class="screen" id="messages">
-      <div class="section-heading">
-        <h2>Messages 💬</h2>
-      </div>
-
-      <div class="form-card">
-        <h2>Connect with people</h2>
-        <p>
-          MOBURIX will support private conversations and group chats.
-        </p>
-        <div class="notice">
-          Messaging is not connected yet. We will add authenticated,
-          real-time messaging after setting up the backend.
-          This demo does not send messages to other people.
-        </div>
-      </div>
-    </section>
-
-    <section class="screen" id="profile">
-      <div class="section-heading">
-        <h2>My Profile 👤</h2>
-      </div>
-
-      <div class="form-card">
-        <div class="avatar" style="width:65px;height:65px;margin-bottom:16px">
-          M
-        </div>
-        <h2 id="profileName">MOBURIX Creator</h2>
-        <p>Your creator profile preview.</p>
-
-        <div class="stat">
-          <span>Publications in this demo</span>
-          <span id="profilePosts">0</span>
-        </div>
-
-        <div class="stat">
-          <span>Followers</span>
-          <span>Backend needed</span>
-        </div>
-
-        <div class="stat">
-          <span>Subscribers</span>
-          <span>Backend needed</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="screen" id="creator">
-      <div class="section-heading">
-        <h2>Creator Studio 💰</h2>
-      </div>
-
-      <div class="notice">
-        No real earnings are being generated or recorded in this prototype.
-        Payment features will require secure backend integration and a
-        supported payment provider.
-      </div>
-
-      <div class="feature-card">
-        <h3>📝 Your Publications</h3>
-        <p>Manage your articles and stories as creator tools are developed.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>⭐ Paid Subscriptions</h3>
-        <p>Planned: offer readers paid access to eligible exclusive content.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>📈 Creator Analytics</h3>
-        <p>Planned: track readership, engagement, and subscription activity.</p>
-      </div>
-
-      <div class="feature-card">
-        <h3>💳 Earnings & Withdrawals</h3>
-        <p>Planned: secure transaction records, balances, and payout requests.</p>
-      </div>
-    </section>
-
-  </main>
-
-  <aside class="rightbar">
-    <div class="panel">
-      <h3>About MOBURIX</h3>
-      <p>
-        A new home for publishing, community, conversation, and creativity.
-      </p>
+<section id="messages" class="page">
+  <div class="panel">
+    <h2>💬 Messages</h2>
+    <div class="empty">
+      <h3>Your conversations will live here.</h3>
+      <p>Private and group messaging will be connected to the backend in a later stage.</p>
     </div>
+    <p class="notice">Messaging is not yet connected. This page does not send messages.</p>
+  </div>
+</section>
 
-    <div class="panel">
-      <h3>Platform Overview</h3>
-      <div class="stat"><span>Content</span><span>All topics</span></div>
-      <div class="stat"><span>Community</span><span>Coming soon</span></div>
-      <div class="stat"><span>Messaging</span><span>Coming soon</span></div>
-      <div class="stat"><span>Monetization</span><span>Planned</span></div>
+<section id="communities" class="page">
+  <div class="panel">
+    <h2>👥 Communities</h2>
+    <p>Find people who share your interests.</p>
+    <div class="post">
+      <h3>📚 Writers & Storytellers</h3>
+      <p>A future home for writers, poets, and storytellers.</p>
     </div>
+    <div class="post">
+      <h3>💡 Learning & Ideas</h3>
+      <p>Share useful knowledge and learn from others.</p>
+    </div>
+    <div class="post">
+      <h3>🚀 Business & Creativity</h3>
+      <p>Discuss business, innovation, and creative work.</p>
+    </div>
+    <p class="notice">Community joining and member discussions require backend integration.</p>
+  </div>
+</section>
 
-    <div class="panel">
-      <h3>Our Vision</h3>
-      <p>
-        Publish your voice. Build your community. Explore opportunities
-        to earn from your creativity.
-      </p>
-    </div>
-  </aside>
+<section id="profile" class="page">
+  <div class="panel">
+    <h2>👤 My Profile</h2>
+    <div class="avatar" style="width:65px;height:65px">M</div>
+    <h3 style="margin-top:12px">MOBURIX Creator</h3>
+    <p>Share your ideas with the world.</p>
+    <div class="stat"><span>Publications on this device</span><strong id="profile-count">0</strong></div>
+    <button class="primary" onclick="showPage('publish')">Write a publication</button>
+    <p class="notice">This is a local prototype profile, not a registered user account.</p>
+  </div>
+</section>
+
+<section id="studio" class="page">
+  <div class="panel">
+    <h2>💰 Creator Studio</h2>
+    <p>Your future home for creator tools and earnings.</p>
+    <div class="stat"><span>Local publications</span><strong id="studio-count">0</strong></div>
+    <div class="stat"><span>Subscription earnings</span><strong>Not connected</strong></div>
+    <div class="stat"><span>Advertising revenue</span><strong>Not connected</strong></div>
+    <div class="stat"><span>Creator marketplace</span><strong>Coming later</strong></div>
+    <p class="notice">No payments or earnings are processed by this prototype.</p>
+  </div>
+</section>
+
+</main>
+
+<aside class="rightbar">
+  <div class="panel">
+    <h3>🔥 Popular Topics</h3>
+    <p style="margin-top:10px">#Writing</p>
+    <p>#Technology</p>
+    <p>#PersonalGrowth</p>
+    <p>#Business</p>
+    <p>#Creativity</p>
+  </div>
+
+  <div class="panel">
+    <h3>✨ Our Vision</h3>
+    <p>A place where every voice can share ideas, build community, and discover new opportunities.</p>
+  </div>
+
+  <div class="panel">
+    <h3>💎 Creator Economy</h3>
+    <p>Tools for subscriptions, premium publications, tips, and creator products are planned for future releases.</p>
+  </div>
+</aside>
 
 </div>
 
-<nav class="mobile-nav">
-  <button class="active" data-screen="home"
-    onclick="showScreen('home')">🏠<br>Home</button>
-
-  <button data-screen="discover"
-    onclick="showScreen('discover')">🔎<br>Discover</button>
-
-  <button data-screen="publish"
-    onclick="showScreen('publish')">✍️<br>Publish</button>
-
-  <button data-screen="messages"
-    onclick="showScreen('messages')">💬<br>Messages</button>
-
-  <button data-screen="profile"
-    onclick="showScreen('profile')">👤<br>Profile</button>
-</nav>
-
 <footer>
-  <div class="logo" style="font-size:18px;margin-bottom:8px">
-    MOBU<span>RIX</span>
-  </div>
-  Publish. Connect. Earn.<br><br>
-  © <span id="year"></span> MOBURIX. Built for creators and communities.
+  <strong>MOBURIX</strong> — Publish. Connect. Earn.<br>
+  <span>Building a home for ideas and creators.</span>
 </footer>
 
 <script>
-const screenNames = [
-  "home", "discover", "publish", "communities",
-  "messages", "profile", "creator"
+const starterPosts = [
+  {
+    author: "MOBURIX Team",
+    title: "Welcome to MOBURIX",
+    category: "Announcements",
+    content: "Welcome to MOBURIX — Publish. Connect. Earn. This is the beginning of a new community for readers, writers, storytellers, and creators. Explore the prototype and imagine what you will publish here.",
+    likes: 0
+  },
+  {
+    author: "Community Journal",
+    title: "Why Every Voice Deserves a Place",
+    category: "Ideas",
+    content: "Every great idea begins with someone willing to share it. Publishing helps people exchange knowledge, tell meaningful stories, and connect across communities. MOBURIX aims to make space for those voices.",
+    likes: 0
+  }
 ];
 
-function showScreen(name) {
-  if (!screenNames.includes(name)) return;
-
-  document.querySelectorAll(".screen").forEach(screen => {
-    screen.classList.toggle("active", screen.id === name);
-  });
-
-  document.querySelectorAll("[data-screen]").forEach(button => {
-    button.classList.toggle(
-      "active",
-      button.dataset.screen === name
-    );
-  });
-
-  window.scrollTo({ top: 0, behavior: "smooth" });
-}
-
-function likePost(button) {
-  const count = button.querySelector("span");
-  const liked = button.classList.toggle("liked");
-  const number = Number(count.textContent);
-
-  count.textContent = liked ? number + 1 : Math.max(0, number - 1);
-  button.firstChild.textContent = liked ? "♥ Unlike " : "♡ Like ";
-}
-
-async function sharePost() {
-  const data = {
-    title: "MOBURIX",
-    text: "Discover MOBURIX — Publish. Connect. Earn.",
-    url: window.location.href
-  };
-
+function loadPosts() {
   try {
-    if (navigator.share) {
-      await navigator.share(data);
-    } else if (navigator.clipboard) {
-      await navigator.clipboard.writeText(
-        data.text + " " + data.url
-      );
-      alert("Sharing text copied where supported.");
-    } else {
-      alert("Open your browser's address bar to copy the website link.");
-    }
-  } catch (error) {
-    if (error.name !== "AbortError") {
-      alert("Sharing is not available in this browser.");
-    }
+    const saved = JSON.parse(localStorage.getItem("moburix_posts") || "[]");
+    return [...saved, ...starterPosts];
+  } catch (e) {
+    return starterPosts.slice();
   }
 }
 
-function escapeHTML(value) {
-  return String(value).replace(/[&<>"']/g, char => ({
-    "&": "&amp;",
-    "<": "&lt;",
-    ">": "&gt;",
-    '"': "&quot;",
-    "'": "&#39;"
-  })[char]);
+function saveUserPosts(posts) {
+  try {
+    localStorage.setItem("moburix_posts", JSON.stringify(posts));
+  } catch (e) {
+    alert("Unable to save on this device. Your browser storage may be full.");
+  }
 }
 
-function addPublication(author, title, category, content) {
-  const post = document.createElement("article");
-  post.className = "post";
+function renderPosts(targetId, posts) {
+  const target = document.getElementById(targetId);
+  if (!posts.length) {
+    target.innerHTML = '<div class="panel"><p>No publications found.</p></div>';
+    return;
+  }
 
-  post.innerHTML = `
-    <div class="post-author">
-      <div class="avatar">${escapeHTML(author.charAt(0).toUpperCase())}</div>
-      <div>
-        <div class="author-name">${escapeHTML(author)}</div>
-        <div class="author-meta">Just now · Local demo publication</div>
+  target.innerHTML = posts.map((post, index) => `
+    <article class="post">
+      <div class="post-head">
+        <div class="avatar">${escapeHTML((post.author || "M").charAt(0).toUpperCase())}</div>
+        <div>
+          <h3>${escapeHTML(post.author)}</h3>
+          <small>${escapeHTML(post.category)} · Prototype publication</small>
+        </div>
       </div>
-    </div>
-    <h3>${escapeHTML(title)}</h3>
-    <p>${escapeHTML(content)}</p>
-    <span class="post-tag">#${escapeHTML(category.replace(/[^a-z0-9]/gi, ""))}</span>
-    <div class="post-actions">
-      <button class="action-btn" onclick="likePost(this)">♡ Like <span>0</span></button>
-      <button class="action-btn" onclick="alert('Comments will be added after backend setup.')">💬 Comment</button>
-      <button class="action-btn" onclick="sharePost()">↗ Share</button>
-    </div>
-  `;
-
-  document.getElementById("feed").prepend(post);
+      <h2>${escapeHTML(post.title)}</h2>
+      <div class="post-content">${escapeHTML(post.content)}</div>
+      <div class="post-actions">
+        <button onclick="likePost(this)">♡ Like (${Number(post.likes) || 0})</button>
+        <button onclick="sharePost('${escapeJS(post.title)}')">↗ Share</button>
+      </div>
+    </article>
+  `).join("");
 }
 
-document.getElementById("publishForm").addEventListener("submit", event => {
-  event.preventDefault();
+function escapeHTML(value) {
+  return String(value || "").replace(/[&<>"']/g, c => ({
+    "&": "&amp;", "<": "&lt;", ">": "&gt;",
+    '"': "&quot;", "'": "&#39;"
+  }[c]));
+}
 
+function escapeJS(value) {
+  return String(value || "").replace(/\\/g, "\\\\").replace(/'/g, "\\'");
+}
+
+function publishPost() {
   const author = document.getElementById("author").value.trim();
   const title = document.getElementById("title").value.trim();
   const category = document.getElementById("category").value;
   const content = document.getElementById("content").value.trim();
 
   if (!author || !title || !content) {
-    alert("Please complete all required fields.");
+    alert("Please enter your display name, publication title, and content.");
     return;
   }
 
-  addPublication(author, title, category, content);
-
-  document.getElementById("profileName").textContent = author;
-
-  const profilePosts = document.getElementById("profilePosts");
-  profilePosts.textContent = Number(profilePosts.textContent) + 1;
-
-  event.target.reset();
-  showScreen("home");
-
-  alert("Your publication has appeared in this demo feed. It is not online for other users yet.");
-});
-
-function searchPosts(query) {
-  const results = document.getElementById("searchResults");
-  results.innerHTML = "";
-
-  const normalized = query.trim().toLowerCase();
-
-  if (!normalized) return;
-
-  const posts = Array.from(document.querySelectorAll("#feed .post"));
-
-  const matches = posts.filter(post =>
-    post.innerText.toLowerCase().includes(normalized)
-  );
-
-  if (!matches.length) {
-    results.innerHTML =
-      '<div class="empty-state">No matching publications found in this demo.</div>';
-    return;
-  }
-
-  matches.forEach(post => {
-    const copy = post.cloneNode(true);
-    copy.querySelectorAll("button").forEach(button => {
-      button.removeAttribute("onclick");
-      button.disabled = true;
-    });
-    results.appendChild(copy);
+  const saved = JSON.parse(localStorage.getItem("moburix_posts") || "[]");
+  saved.unshift({
+    author, title, category, content, likes: 0,
+    createdAt: new Date().toISOString()
   });
+  saveUserPosts(saved);
+
+  document.getElementById("title").value = "";
+  document.getElementById("content").value = "";
+  renderAll();
+  showPage("home");
+  alert("Your publication has been saved in this browser.");
 }
 
-document.getElementById("year").textContent = new Date().getFullYear();
+function renderAll() {
+  const posts = loadPosts();
+  renderPosts("feed", posts);
+  renderPosts("discover-feed", posts);
+  const count = posts.length - starterPosts.length;
+  document.getElementById("profile-count").textContent = count;
+  document.getElementById("studio-count").textContent = count;
+}
+
+function showPage(id, button) {
+  document.querySelectorAll(".page").forEach(page => page.classList.remove("active"));
+  const target = document.getElementById(id);
+  if (target) target.classList.add("active");
+
+  document.querySelectorAll("nav button, .side-link").forEach(b => b.classList.remove("active"));
+  if (button) button.classList.add("active");
+
+  window.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function searchPosts() {
+  const query = document.getElementById("search").value.toLowerCase().trim();
+  const posts = loadPosts().filter(p =>
+    (p.title + " " + p.content + " " + p.author + " " + p.category)
+      .toLowerCase().includes(query)
+  );
+  renderPosts("discover-feed", posts);
+}
+
+function likePost(button) {
+  button.textContent = button.textContent.startsWith("♡")
+    ? button.textContent.replace("♡", "♥")
+    : button.textContent.replace("♥", "♡");
+}
+
+async function sharePost(title) {
+  try {
+    if (navigator.share) {
+      await navigator.share({ title, text: "Read this on MOBURIX" });
+    } else {
+      await navigator.clipboard.writeText(title);
+      alert("Publication title copied.");
+    }
+  } catch (e) {
+    // The user may cancel the share dialog.
+  }
+}
+
+renderAll();
 </script>
 
 </body>
-</html>
+  </html>
