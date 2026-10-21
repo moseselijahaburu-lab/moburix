@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#590D09">
+
 <title>MOBURIX — Publish. Connect. Earn.</title>
 
 <style>
@@ -16,9 +17,12 @@
   --card: #1C1212;
   --muted: #BFAEAC;
   --border: #42201D;
+  --accent: #FF6258;
 }
 
-* { box-sizing: border-box; }
+* {
+  box-sizing: border-box;
+}
 
 body {
   margin: 0;
@@ -27,13 +31,22 @@ body {
   color: var(--white);
 }
 
-button, input, textarea { font: inherit; }
+button, input, textarea {
+  font: inherit;
+}
 
-button { cursor: pointer; }
+button {
+  cursor: pointer;
+}
+
+button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+}
 
 header {
   background: var(--dark);
-  padding: 18px 16px;
+  padding: 17px 16px;
   border-bottom: 1px solid var(--border);
   position: sticky;
   top: 0;
@@ -41,12 +54,14 @@ header {
 }
 
 .brand {
-  font-size: 23px;
+  font-size: 24px;
   font-weight: 900;
   letter-spacing: 1px;
 }
 
-.brand span { color: #FF6258; }
+.brand span {
+  color: var(--accent);
+}
 
 .tagline {
   color: var(--muted);
@@ -55,24 +70,34 @@ header {
 }
 
 main {
-  max-width: 680px;
+  max-width: 700px;
   margin: auto;
-  padding: 20px 15px 90px;
+  padding: 20px 14px 100px;
 }
 
 .card {
   background: var(--card);
   border: 1px solid var(--border);
   border-radius: 16px;
-  padding: 20px;
-  margin-bottom: 18px;
+  padding: 18px;
+  margin-bottom: 16px;
 }
 
-h1, h2, h3 { margin-top: 0; }
+h1, h2, h3 {
+  margin-top: 0;
+}
 
-p { line-height: 1.6; }
+p {
+  line-height: 1.6;
+}
 
-.muted { color: var(--muted); }
+.muted {
+  color: var(--muted);
+}
+
+.small {
+  font-size: 12px;
+}
 
 input, textarea {
   display: block;
@@ -81,13 +106,12 @@ input, textarea {
   color: white;
   border: 1px solid #67403C;
   border-radius: 10px;
-  padding: 14px;
+  padding: 13px;
   margin: 9px 0 15px;
-  outline: none;
 }
 
 input:focus, textarea:focus {
-  border-color: #FF6258;
+  outline: 1px solid var(--accent);
 }
 
 textarea {
@@ -99,7 +123,7 @@ textarea {
   display: inline-block;
   border: none;
   border-radius: 10px;
-  padding: 13px 17px;
+  padding: 12px 15px;
   background: var(--red);
   color: white;
   font-weight: bold;
@@ -115,15 +139,24 @@ textarea {
   margin-top: 5px;
 }
 
+.btn.small-btn {
+  font-size: 12px;
+  padding: 9px 11px;
+}
+
 .tabs {
   display: flex;
   gap: 8px;
   margin-bottom: 16px;
 }
 
-.tabs button { flex: 1; }
+.tabs button {
+  flex: 1;
+}
 
-.hidden { display: none !important; }
+.hidden {
+  display: none !important;
+}
 
 .notice {
   padding: 12px;
@@ -132,6 +165,21 @@ textarea {
   background: #2A1715;
   color: #FFD4CF;
   overflow-wrap: anywhere;
+  font-size: 14px;
+}
+
+.notice.success {
+  color: #C7FFD7;
+  background: #10281A;
+}
+
+.badge {
+  display: inline-block;
+  color: #FF8C83;
+  border: 1px solid var(--border);
+  padding: 5px 9px;
+  border-radius: 20px;
+  font-size: 11px;
 }
 
 nav {
@@ -141,45 +189,121 @@ nav {
   right: 0;
   display: flex;
   justify-content: space-around;
-  gap: 4px;
+  gap: 2px;
   background: #210A08;
   border-top: 1px solid var(--border);
-  padding: 10px 4px;
+  padding: 8px 2px;
+  padding-bottom: max(8px, env(safe-area-inset-bottom));
   z-index: 20;
 }
 
 nav button {
+  flex: 1;
   background: transparent;
   border: none;
   color: white;
-  font-size: 12px;
-  padding: 7px 4px;
+  font-size: 11px;
+  padding: 7px 1px;
 }
 
-nav button.active { color: #FF6258; }
+nav button.active {
+  color: var(--accent);
+}
 
 .feed-post {
   border-bottom: 1px solid var(--border);
-  padding: 14px 0;
+  padding: 15px 0;
   overflow-wrap: anywhere;
 }
 
-.feed-post:last-child { border-bottom: none; }
+.feed-post:last-child {
+  border-bottom: none;
+}
 
-.badge {
-  display: inline-block;
-  color: #FF8C83;
-  border: 1px solid var(--border);
-  padding: 5px 9px;
-  border-radius: 20px;
-  font-size: 12px;
+.post-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.avatar {
+  width: 39px;
+  height: 39px;
+  min-width: 39px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--burgundy);
+  border: 1px solid #8E3932;
+  font-weight: bold;
+}
+
+.post-author {
+  font-weight: bold;
+}
+
+.post-date {
+  font-size: 11px;
+  color: var(--muted);
+  margin-top: 4px;
+}
+
+.post-content {
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  line-height: 1.6;
+  margin: 12px 0;
+}
+
+.post-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.comment-area {
+  border-top: 1px solid var(--border);
+  margin-top: 14px;
+  padding-top: 12px;
+}
+
+.comment-item {
+  background: #120B0B;
+  border-radius: 9px;
+  padding: 10px;
+  margin: 8px 0;
+  overflow-wrap: anywhere;
+}
+
+.comment-form {
+  margin-top: 12px;
+}
+
+.comment-form textarea {
+  min-height: 65px;
 }
 
 footer {
   text-align: center;
   color: var(--muted);
   font-size: 12px;
-  padding: 20px;
+  padding: 20px 10px 100px;
+}
+
+a {
+  color: #FF8C83;
+}
+
+@media (min-width: 600px) {
+  main {
+    padding-top: 28px;
+  }
+
+  .card {
+    padding: 22px;
+  }
 }
 </style>
 </head>
@@ -187,39 +311,47 @@ footer {
 <body>
 
 <header>
-  <div class="brand">MOZA<span>BRIX</span></div>
-  <div class="tagline">MOBURIX · Publish. Connect. Earn.</div>
+  <div class="brand">MOBU<span>RIX</span></div>
+  <div class="tagline">Publish. Connect. Earn.</div>
 </header>
 
 <main>
 
+<!-- AUTHENTICATION -->
 <section id="welcome" class="card">
   <span class="badge">YOUR VOICE. YOUR COMMUNITY.</span>
+
   <h1 style="margin-top:18px">Welcome to MOBURIX</h1>
+
   <p class="muted">
-    A place to publish your ideas, build your audience,
-    connect with people, and grow as a creator.
+    Publish your ideas, connect with people, build your audience,
+    and grow as a creator.
   </p>
 
   <div class="tabs">
-    <button class="btn" id="showLogin">Log in</button>
-    <button class="btn secondary" id="showSignup">Create account</button>
+    <button class="btn" id="showLogin" type="button">Log in</button>
+    <button class="btn secondary" id="showSignup" type="button">
+      Create account
+    </button>
   </div>
 
   <div id="authMessage" class="notice hidden" role="status"></div>
 
   <form id="loginForm">
     <h2>Welcome back</h2>
+
     <label for="loginEmail">Email address</label>
-    <input id="loginEmail" type="email" autocomplete="email"
-      placeholder="you@example.com" required>
+    <input id="loginEmail" type="email"
+      autocomplete="email" placeholder="you@example.com" required>
 
     <label for="loginPassword">Password</label>
     <input id="loginPassword" type="password"
-      autocomplete="current-password" minlength="6" required>
+      autocomplete="current-password" required>
 
     <button class="btn full" type="submit">Log in</button>
-    <button class="btn secondary full" type="button" id="forgotPassword">
+
+    <button class="btn secondary full" id="forgotPassword"
+      type="button">
       Forgot password?
     </button>
   </form>
@@ -232,63 +364,94 @@ footer {
       autocomplete="name" placeholder="Your name" required>
 
     <label for="signupEmail">Email address</label>
-    <input id="signupEmail" type="email" autocomplete="email"
-      placeholder="you@example.com" required>
+    <input id="signupEmail" type="email"
+      autocomplete="email" placeholder="you@example.com" required>
 
     <label for="signupPassword">Create password</label>
     <input id="signupPassword" type="password"
-      autocomplete="new-password" minlength="8"
+      minlength="8" autocomplete="new-password"
       placeholder="At least 8 characters" required>
 
     <button class="btn full" type="submit">Create account</button>
 
-    <p class="muted" style="font-size:12px">
-      Use a password you don't use on another website.
+    <p class="muted small">
+      Use a unique password that you do not use elsewhere.
     </p>
   </form>
 </section>
 
+<!-- APPLICATION -->
 <section id="dashboard" class="hidden">
-  <div class="card">
-    <span class="badge">YOUR ACCOUNT</span>
-    <h1 id="helloName" style="margin-top:14px">Welcome!</h1>
-    <p class="muted" id="accountEmail"></p>
-    <div id="accountMessage" class="notice hidden" role="status"></div>
-    <button class="btn secondary" id="logoutButton">Log out</button>
-  </div>
 
   <section id="homeSection" class="card">
-    <h2>Home feed</h2>
+    <span class="badge">COMMUNITY FEED</span>
+    <h2 style="margin-top:14px">🌍 MOBURIX Feed</h2>
+
     <p class="muted">
-      You're signed in! The account system is connected.
-      Shared posts will be added in a later development step.
+      Discover ideas and publications from the community.
     </p>
-    <div class="feed-post">
-      <strong>Welcome to MOBURIX</strong>
-      <p class="muted">
-        Publish your ideas. Connect with your community.
-        Build something meaningful.
-      </p>
+
+    <button class="btn secondary full" id="refreshFeed"
+      type="button">
+      Refresh feed
+    </button>
+
+    <div id="feedMessage" class="notice hidden" role="status"></div>
+
+    <div id="postsFeed">
+      <p class="muted">Loading publications...</p>
     </div>
   </section>
 
   <section id="publishSection" class="card hidden">
-    <h2>Create a publication</h2>
+    <h2>✍️ Create a publication</h2>
+
     <p class="muted">
-      This form is a preview. Publishing to a shared feed
-      will be enabled when we add the posts database.
+      Share something meaningful with the MOBURIX community.
     </p>
-    <form id="previewPostForm">
+
+    <form id="publishForm">
       <label for="postText">What's on your mind?</label>
+
       <textarea id="postText" maxlength="2000"
-        placeholder="Share an idea..." required></textarea>
-      <button class="btn full" type="submit">Preview publication</button>
+        placeholder="Share your ideas with the world..."
+        required></textarea>
+
+      <div class="muted small" id="characterCount">
+        0 / 2000 characters
+      </div>
+
+      <button class="btn full" id="publishButton" type="submit">
+        Publish post
+      </button>
     </form>
-    <div id="postPreview"></div>
+
+    <div id="publishMessage" class="notice hidden" role="status"></div>
+  </section>
+
+  <section id="discoverSection" class="card hidden">
+    <h2>🔎 Discover</h2>
+    <p class="muted">
+      Welcome to MOBURIX. The creator discovery directory
+      and following system will be added in a future update.
+    </p>
+  </section>
+
+  <section id="messagesSection" class="card hidden">
+    <h2>💬 Messages</h2>
+    <p class="muted">
+      Private messaging is planned for a future update.
+    </p>
   </section>
 
   <section id="profileSection" class="card hidden">
-    <h2>Your profile</h2>
+    <span class="badge">YOUR ACCOUNT</span>
+    <h2 style="margin-top:14px">👤 Your profile</h2>
+
+    <p id="accountEmail" class="muted"></p>
+
+    <div id="profileMessage" class="notice hidden" role="status"></div>
+
     <form id="profileForm">
       <label for="profileName">Display name</label>
       <input id="profileName" maxlength="60" required>
@@ -302,32 +465,36 @@ footer {
 
       <button class="btn full" type="submit">Save profile</button>
     </form>
-    <div id="profileMessage" class="notice hidden" role="status"></div>
+
+    <button class="btn secondary full" id="logoutButton"
+      type="button" style="margin-top:18px">
+      Log out
+    </button>
   </section>
 
-  <section id="discoverSection" class="card hidden">
-    <h2>Discover</h2>
-    <p class="muted">
-      Discover creators and communities as these features are built.
-    </p>
-  </section>
-
-  <section id="messagesSection" class="card hidden">
-    <h2>Messages</h2>
-    <p class="muted">
-      Private messaging is planned for a future development step.
-    </p>
-  </section>
 </section>
-
 </main>
 
 <nav id="bottomNav" class="hidden" aria-label="Main navigation">
-  <button class="active" data-section="homeSection">🏠<br>Home</button>
-  <button data-section="discoverSection">🔎<br>Discover</button>
-  <button data-section="publishSection">✍️<br>Publish</button>
-  <button data-section="messagesSection">💬<br>Messages</button>
-  <button data-section="profileSection">👤<br>Profile</button>
+  <button class="active" data-section="homeSection" type="button">
+    🏠<br>Home
+  </button>
+
+  <button data-section="discoverSection" type="button">
+    🔎<br>Discover
+  </button>
+
+  <button data-section="publishSection" type="button">
+    ✍️<br>Publish
+  </button>
+
+  <button data-section="messagesSection" type="button">
+    💬<br>Messages
+  </button>
+
+  <button data-section="profileSection" type="button">
+    👤<br>Profile
+  </button>
 </nav>
 
 <footer>MOBURIX · Publish. Connect. Earn.</footer>
@@ -336,7 +503,10 @@ footer {
 import { createClient } from
   'https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/+esm';
 
-const SUPABASE_URL = 'https://hvziwdlbwkyesraendzc.supabase.co';
+/* SUPABASE CONNECTION */
+const SUPABASE_URL =
+  'https://hvziwdlbwkyesraendzc.supabase.co';
+
 const SUPABASE_PUBLISHABLE_KEY =
   'sb_publishable_94PA2EKfsmTE3-KILuaSWw_S5teKuBB';
 
@@ -347,36 +517,54 @@ const supabase = createClient(
 
 const $ = id => document.getElementById(id);
 
-function showMessage(id, message) {
-  const box = $(id);
-  box.textContent = message;
-  box.classList.remove('hidden');
+let currentUser = null;
+let feedRequest = 0;
+const openCommentPosts = new Set();
+
+/* MESSAGES */
+function showMessage(id, message, success = false) {
+  const element = $(id);
+  element.textContent = message;
+  element.classList.remove('hidden', 'success');
+
+  if (success) element.classList.add('success');
 }
 
 function clearMessage(id) {
-  $(id).textContent = '';
-  $(id).classList.add('hidden');
+  const element = $(id);
+  element.textContent = '';
+  element.classList.add('hidden');
+  element.classList.remove('success');
 }
 
 function readableError(error) {
   const message = error?.message || 'Something went wrong.';
-  return message.length > 240 ? message.slice(0, 240) : message;
+  return message.length > 250 ? message.slice(0, 250) : message;
 }
 
+function setBusy(button, busy, busyText, originalText) {
+  button.disabled = busy;
+  button.textContent = busy ? busyText : originalText;
+}
+
+/* AUTHENTICATION FORMS */
 function setAuthMode(mode) {
   const signup = mode === 'signup';
+
   $('loginForm').classList.toggle('hidden', signup);
   $('signupForm').classList.toggle('hidden', !signup);
+
   clearMessage('authMessage');
 }
 
 $('showLogin').addEventListener('click', () => setAuthMode('login'));
 $('showSignup').addEventListener('click', () => setAuthMode('signup'));
 
+/* NAVIGATION */
 function showSection(sectionId) {
-  document.querySelectorAll(
-    '#dashboard > section'
-  ).forEach(section => section.classList.add('hidden'));
+  document.querySelectorAll('#dashboard > section').forEach(section => {
+    section.classList.add('hidden');
+  });
 
   $(sectionId).classList.remove('hidden');
 
@@ -386,6 +574,10 @@ function showSection(sectionId) {
       button.dataset.section === sectionId
     );
   });
+
+  if (sectionId === 'homeSection') {
+    loadFeed();
+  }
 }
 
 document.querySelectorAll('#bottomNav button').forEach(button => {
@@ -394,8 +586,11 @@ document.querySelectorAll('#bottomNav button').forEach(button => {
   });
 });
 
+/* LOAD PROFILE */
 async function loadProfile(user) {
-  let { data: profile, error } = await supabase
+  let profile = null;
+
+  const { data, error } = await supabase
     .from('profiles')
     .select('username, display_name, bio')
     .eq('id', user.id)
@@ -403,6 +598,8 @@ async function loadProfile(user) {
 
   if (error) {
     console.error('Profile read error:', error);
+  } else {
+    profile = data;
   }
 
   if (!profile) {
@@ -428,10 +625,10 @@ async function loadProfile(user) {
 
     if (createError) {
       console.error('Profile creation error:', createError);
+
       showMessage(
-        'accountMessage',
-        'Your account is signed in, but the profile could not load. ' +
-        readableError(createError)
+        'profileMessage',
+        'Could not load your profile: ' + readableError(createError)
       );
     } else {
       profile = created;
@@ -439,33 +636,39 @@ async function loadProfile(user) {
   }
 
   $('profileName').value =
-    profile?.display_name || user.user_metadata?.display_name || '';
+    profile?.display_name ||
+    user.user_metadata?.display_name ||
+    '';
 
-  $('profileUsername').value = profile?.username || 'Not available';
+  $('profileUsername').value =
+    profile?.username || 'Not available';
+
   $('profileBio').value = profile?.bio || '';
 }
 
+/* SHOW ACCOUNT */
 async function renderSession(session) {
-  const signedIn = Boolean(session?.user);
+  currentUser = session?.user || null;
+
+  const signedIn = Boolean(currentUser);
 
   $('welcome').classList.toggle('hidden', signedIn);
   $('dashboard').classList.toggle('hidden', !signedIn);
   $('bottomNav').classList.toggle('hidden', !signedIn);
 
-  if (!signedIn) return;
+  if (!signedIn) {
+    openCommentPosts.clear();
+    return;
+  }
 
-  const user = session.user;
+  $('accountEmail').textContent = currentUser.email || '';
 
-  $('helloName').textContent =
-    'Welcome, ' + (user.user_metadata?.display_name || 'Creator') + '!';
+  await loadProfile(currentUser);
 
-  $('accountEmail').textContent = user.email || '';
-
-  clearMessage('accountMessage');
-  await loadProfile(user);
   showSection('homeSection');
 }
 
+/* SIGN UP */
 $('signupForm').addEventListener('submit', async event => {
   event.preventDefault();
   clearMessage('authMessage');
@@ -479,9 +682,8 @@ $('signupForm').addEventListener('submit', async event => {
     return;
   }
 
-  const button = $('signupForm').querySelector('button[type="submit"]');
-  button.disabled = true;
-  button.textContent = 'Creating account...';
+  const button = $('signupForm').querySelector('[type="submit"]');
+  setBusy(button, true, 'Creating account...', 'Create account');
 
   try {
     const { data, error } = await supabase.auth.signUp({
@@ -500,25 +702,24 @@ $('signupForm').addEventListener('submit', async event => {
     } else {
       showMessage(
         'authMessage',
-        'Registration received! Check your email for a confirmation link. ' +
-        'If confirmation is disabled, try logging in.'
+        'Account registration received. Check your email for a confirmation link before logging in.',
+        true
       );
     }
   } catch (error) {
     showMessage('authMessage', readableError(error));
   } finally {
-    button.disabled = false;
-    button.textContent = 'Create account';
+    setBusy(button, false, '', 'Create account');
   }
 });
 
+/* LOG IN */
 $('loginForm').addEventListener('submit', async event => {
   event.preventDefault();
   clearMessage('authMessage');
 
-  const button = $('loginForm').querySelector('button[type="submit"]');
-  button.disabled = true;
-  button.textContent = 'Logging in...';
+  const button = $('loginForm').querySelector('[type="submit"]');
+  setBusy(button, true, 'Logging in...', 'Log in');
 
   try {
     const { data, error } = await supabase.auth.signInWithPassword({
@@ -532,11 +733,11 @@ $('loginForm').addEventListener('submit', async event => {
   } catch (error) {
     showMessage('authMessage', readableError(error));
   } finally {
-    button.disabled = false;
-    button.textContent = 'Log in';
+    setBusy(button, false, '', 'Log in');
   }
 });
 
+/* PASSWORD RECOVERY */
 $('forgotPassword').addEventListener('click', async () => {
   clearMessage('authMessage');
 
@@ -545,7 +746,7 @@ $('forgotPassword').addEventListener('click', async () => {
   if (!email) {
     showMessage(
       'authMessage',
-      'Enter your email address above first, then tap Forgot password.'
+      'Enter your email address in the login form first.'
     );
     return;
   }
@@ -559,33 +760,39 @@ $('forgotPassword').addEventListener('click', async () => {
 
     showMessage(
       'authMessage',
-      'If this email belongs to an account, a password-reset email will be sent.'
+      'If this email belongs to an account, a password-reset email will be sent.',
+      true
     );
   } catch (error) {
     showMessage('authMessage', readableError(error));
   }
 });
 
+/* LOG OUT */
 $('logoutButton').addEventListener('click', async () => {
-  const { error } = await supabase.auth.signOut();
+  const button = $('logoutButton');
+  setBusy(button, true, 'Logging out...', 'Log out');
 
-  if (error) {
-    showMessage('accountMessage', readableError(error));
-    return;
+  try {
+    const { error } = await supabase.auth.signOut();
+
+    if (error) throw error;
+
+    await renderSession(null);
+    setAuthMode('login');
+  } catch (error) {
+    showMessage('profileMessage', readableError(error));
+  } finally {
+    setBusy(button, false, '', 'Log out');
   }
-
-  setAuthMode('login');
-  await renderSession(null);
 });
 
+/* SAVE PROFILE */
 $('profileForm').addEventListener('submit', async event => {
   event.preventDefault();
   clearMessage('profileMessage');
 
-  const { data: { user }, error: userError } =
-    await supabase.auth.getUser();
-
-  if (userError || !user) {
+  if (!currentUser) {
     showMessage('profileMessage', 'Please log in again.');
     return;
   }
@@ -598,58 +805,612 @@ $('profileForm').addEventListener('submit', async event => {
     return;
   }
 
-  const { error } = await supabase
-    .from('profiles')
-    .update({
-      display_name: displayName,
-      bio,
-      updated_at: new Date().toISOString()
-    })
-    .eq('id', user.id);
+  const button = $('profileForm').querySelector('[type="submit"]');
+  setBusy(button, true, 'Saving...', 'Save profile');
 
-  if (error) {
+  try {
+    const { error } = await supabase
+      .from('profiles')
+      .update({
+        display_name: displayName,
+        bio,
+        updated_at: new Date().toISOString()
+      })
+      .eq('id', currentUser.id);
+
+    if (error) throw error;
+
+    const { error: metadataError } = await supabase.auth.updateUser({
+      data: { display_name: displayName }
+    });
+
+    if (metadataError) {
+      console.warn('Profile metadata update:', metadataError.message);
+    }
+
+    showMessage('profileMessage', 'Your profile was saved!', true);
+  } catch (error) {
     showMessage('profileMessage', readableError(error));
+  } finally {
+    setBusy(button, false, '', 'Save profile');
+  }
+});
+
+/* CHARACTER COUNT */
+$('postText').addEventListener('input', () => {
+  $('characterCount').textContent =
+    $('postText').value.length + ' / 2000 characters';
+});
+
+/* PUBLISH A REAL POST */
+$('publishForm').addEventListener('submit', async event => {
+  event.preventDefault();
+  clearMessage('publishMessage');
+
+  if (!currentUser) {
+    showMessage('publishMessage', 'Please log in before publishing.');
     return;
   }
 
-  $('helloName').textContent = 'Welcome, ' + displayName + '!';
-  showMessage('profileMessage', 'Profile saved successfully!');
+  const content = $('postText').value.trim();
+
+  if (!content) {
+    showMessage('publishMessage', 'Write something before publishing.');
+    return;
+  }
+
+  const button = $('publishButton');
+  setBusy(button, true, 'Publishing...', 'Publish post');
+
+  try {
+    const { error } = await supabase
+      .from('posts')
+      .insert({
+        user_id: currentUser.id,
+        content
+      });
+
+    if (error) throw error;
+
+    $('postText').value = '';
+    $('characterCount').textContent = '0 / 2000 characters';
+
+    showMessage('publishMessage', 'Your post has been published!', true);
+
+    await loadFeed();
+    showSection('homeSection');
+  } catch (error) {
+    showMessage(
+      'publishMessage',
+      'Could not publish your post: ' + readableError(error)
+    );
+  } finally {
+    setBusy(button, false, '', 'Publish post');
+  }
 });
 
-$('previewPostForm').addEventListener('submit', event => {
-  event.preventDefault();
+/* SAFE ELEMENT CREATION */
+function makeElement(tag, className, text) {
+  const element = document.createElement(tag);
 
-  const post = document.createElement('div');
-  post.className = 'feed-post';
+  if (className) element.className = className;
+  if (text !== undefined) element.textContent = text;
 
-  const title = document.createElement('strong');
-  title.textContent = 'Your preview';
-
-  const content = document.createElement('p');
-  content.textContent = $('postText').value.trim();
-
-  const note = document.createElement('small');
-  note.className = 'muted';
-  note.textContent = 'Preview only — not shared with other users.';
-
-  post.append(title, content, note);
-  $('postPreview').replaceChildren(post);
-  $('postText').value = '';
-});
-
-supabase.auth.onAuthStateChange((event, session) => {
-  if (event === 'INITIAL_SESSION') return;
-  setTimeout(() => renderSession(session), 0);
-});
-
-const { data: { session }, error: sessionError } =
-  await supabase.auth.getSession();
-
-if (sessionError) {
-  console.error('Session check error:', sessionError);
+  return element;
 }
 
-await renderSession(session);
+function formatDate(value) {
+  const date = new Date(value);
+
+  if (Number.isNaN(date.getTime())) return '';
+
+  return date.toLocaleString([], {
+    dateStyle: 'medium',
+    timeStyle: 'short'
+  });
+}
+
+/* LOAD FEED */
+async function loadFeed() {
+  const requestId = ++feedRequest;
+  const feed = $('postsFeed');
+
+  feed.replaceChildren(
+    makeElement('p', 'muted', 'Loading publications...')
+  );
+
+  clearMessage('feedMessage');
+
+  try {
+    const { data: posts, error } = await supabase
+      .from('posts')
+      .select('id, user_id, content, created_at')
+      .order('created_at', { ascending: false })
+      .limit(50);
+
+    if (error) throw error;
+
+    if (requestId !== feedRequest) return;
+
+    if (!posts || posts.length === 0) {
+      feed.replaceChildren(
+        makeElement(
+          'p',
+          'muted',
+          'No publications yet. Be the first to share something!'
+        )
+      );
+      return;
+    }
+
+    const userIds = [...new Set(posts.map(post => post.user_id))];
+
+    const { data: profiles, error: profileError } = await supabase
+      .from('profiles')
+      .select('id, username, display_name')
+      .in('id', userIds);
+
+    if (requestId !== feedRequest) return;
+
+    if (profileError) {
+      console.warn('Could not load post authors:', profileError);
+    }
+
+    const profileMap = new Map(
+      (profiles || []).map(profile => [profile.id, profile])
+    );
+
+    const postIds = posts.map(post => post.id);
+
+    const { data: likes, error: likesError } = await supabase
+      .from('post_likes')
+      .select('post_id, user_id')
+      .in('post_id', postIds);
+
+    if (requestId !== feedRequest) return;
+
+    if (likesError) {
+      console.warn('Could not load likes:', likesError);
+    }
+
+    const likesMap = new Map();
+
+    (likes || []).forEach(like => {
+      if (!likesMap.has(like.post_id)) {
+        likesMap.set(like.post_id, []);
+      }
+
+      likesMap.get(like.post_id).push(like.user_id);
+    });
+
+    const fragment = document.createDocumentFragment();
+
+    for (const post of posts) {
+      const profile = profileMap.get(post.user_id);
+
+      const displayName =
+        profile?.display_name ||
+        profile?.username ||
+        'MOBURIX Creator';
+
+      const postElement = makeElement('article', 'feed-post');
+      postElement.dataset.postId = post.id;
+
+      const authorHeader = makeElement('div', 'post-header');
+
+      const avatar = makeElement(
+        'div',
+        'avatar',
+        displayName.trim().charAt(0).toUpperCase() || 'M'
+      );
+
+      const authorInfo = makeElement('div');
+      authorInfo.append(
+        makeElement('div', 'post-author', displayName),
+        makeElement('div', 'post-date', formatDate(post.created_at))
+      );
+
+      authorHeader.append(avatar, authorInfo);
+      postElement.append(authorHeader);
+
+      postElement.append(
+        makeElement('div', 'post-content', post.content)
+      );
+
+      const postLikes = likesMap.get(post.id) || [];
+      const likedByMe = currentUser &&
+        postLikes.includes(currentUser.id);
+
+      const actions = makeElement('div', 'post-actions');
+
+      const likeButton = makeElement(
+        'button',
+        likedByMe ? 'btn small-btn' : 'btn secondary small-btn',
+        (likedByMe ? '❤️ Liked' : '🤍 Like') +
+        ' (' + postLikes.length + ')'
+      );
+
+      likeButton.type = 'button';
+
+      likeButton.addEventListener('click', async () => {
+        await toggleLike(post.id, likeButton);
+      });
+
+      const commentsButton = makeElement(
+        'button',
+        'btn secondary small-btn',
+        '💬 Comments'
+      );
+
+      commentsButton.type = 'button';
+
+      commentsButton.addEventListener('click', () => {
+        const isOpen = openCommentPosts.has(String(post.id));
+
+        if (isOpen) {
+          openCommentPosts.delete(String(post.id));
+        } else {
+          openCommentPosts.add(String(post.id));
+        }
+
+        renderCommentsState(post.id, postElement);
+      });
+
+      actions.append(likeButton, commentsButton);
+
+      if (currentUser && currentUser.id === post.user_id) {
+        const deleteButton = makeElement(
+          'button',
+          'btn secondary small-btn',
+          '🗑️ Delete'
+        );
+
+        deleteButton.type = 'button';
+
+        deleteButton.addEventListener('click', async () => {
+          await deletePost(post.id, deleteButton);
+        });
+
+        actions.append(deleteButton);
+      }
+
+      postElement.append(actions);
+
+      const commentArea = makeElement('div', 'comment-area hidden');
+      commentArea.id = 'comments-' + post.id;
+
+      postElement.append(commentArea);
+      fragment.append(postElement);
+
+      if (openCommentPosts.has(String(post.id))) {
+        renderCommentsState(post.id, postElement);
+      }
+    }
+
+    if (requestId === feedRequest) {
+      feed.replaceChildren(fragment);
+    }
+
+  } catch (error) {
+    if (requestId !== feedRequest) return;
+
+    feed.replaceChildren();
+
+    showMessage(
+      'feedMessage',
+      'Could not load the feed: ' + readableError(error)
+    );
+  }
+}
+
+$('refreshFeed').addEventListener('click', loadFeed);
+
+/* LIKE OR UNLIKE */
+async function toggleLike(postId, button) {
+  if (!currentUser) {
+    showMessage('feedMessage', 'Please log in to like posts.');
+    return;
+  }
+
+  const originalText = button.textContent;
+  button.disabled = true;
+
+  try {
+    const { data: existing, error: readError } = await supabase
+      .from('post_likes')
+      .select('id')
+      .eq('post_id', postId)
+      .eq('user_id', currentUser.id)
+      .maybeSingle();
+
+    if (readError) throw readError;
+
+    if (existing) {
+      const { error } = await supabase
+        .from('post_likes')
+        .delete()
+        .eq('id', existing.id)
+        .eq('user_id', currentUser.id);
+
+      if (error) throw error;
+    } else {
+      const { error } = await supabase
+        .from('post_likes')
+        .insert({
+          post_id: postId,
+          user_id: currentUser.id
+        });
+
+      if (error) throw error;
+    }
+
+    await loadFeed();
+
+  } catch (error) {
+    button.textContent = originalText;
+    showMessage(
+      'feedMessage',
+      'Could not update your like: ' + readableError(error)
+    );
+  } finally {
+    button.disabled = false;
+  }
+}
+
+/* DELETE OWN POST */
+async function deletePost(postId, button) {
+  if (!currentUser) return;
+
+  if (!confirm('Delete this publication permanently?')) return;
+
+  button.disabled = true;
+
+  try {
+    const { error } = await supabase
+      .from('posts')
+      .delete()
+      .eq('id', postId)
+      .eq('user_id', currentUser.id);
+
+    if (error) throw error;
+
+    openCommentPosts.delete(String(postId));
+
+    await loadFeed();
+
+  } catch (error) {
+    showMessage(
+      'feedMessage',
+      'Could not delete the post: ' + readableError(error)
+    );
+
+    button.disabled = false;
+  }
+}
+
+/* OPEN AND LOAD COMMENTS */
+async function renderCommentsState(postId, postElement) {
+  const area = postElement.querySelector('.comment-area');
+
+  if (!openCommentPosts.has(String(postId))) {
+    area.classList.add('hidden');
+    return;
+  }
+
+  area.classList.remove('hidden');
+  area.replaceChildren(
+    makeElement('p', 'muted', 'Loading comments...')
+  );
+
+  try {
+    const { data: comments, error } = await supabase
+      .from('post_comments')
+      .select('id, user_id, content, created_at')
+      .eq('post_id', postId)
+      .order('created_at', { ascending: true })
+      .limit(100);
+
+    if (error) throw error;
+
+    if (!openCommentPosts.has(String(postId))) return;
+
+    area.replaceChildren();
+
+    const commentList = makeElement('div');
+
+    if (!comments || comments.length === 0) {
+      commentList.append(
+        makeElement('p', 'muted small', 'No comments yet.')
+      );
+    } else {
+      const userIds = [...new Set(comments.map(c => c.user_id))];
+
+      const { data: profiles, error: profileError } = await supabase
+        .from('profiles')
+        .select('id, username, display_name')
+        .in('id', userIds);
+
+      if (profileError) {
+        console.warn('Comment author lookup:', profileError);
+      }
+
+      const profileMap = new Map(
+        (profiles || []).map(profile => [profile.id, profile])
+      );
+
+      for (const comment of comments) {
+        const profile = profileMap.get(comment.user_id);
+
+        const author =
+          profile?.display_name ||
+          profile?.username ||
+          'MOBURIX Creator';
+
+        const item = makeElement('div', 'comment-item');
+
+        const heading = makeElement('strong', '', author);
+
+        const date = makeElement(
+          'div',
+          'post-date',
+          formatDate(comment.created_at)
+        );
+
+        const text = makeElement('p', '', comment.content);
+
+        item.append(heading, date, text);
+
+        if (currentUser && currentUser.id === comment.user_id) {
+          const deleteButton = makeElement(
+            'button',
+            'btn secondary small-btn',
+            'Delete comment'
+          );
+
+          deleteButton.type = 'button';
+
+          deleteButton.addEventListener('click', async () => {
+            await deleteComment(comment.id, postId, deleteButton);
+          });
+
+          item.append(deleteButton);
+        }
+
+        commentList.append(item);
+      }
+    }
+
+    area.append(commentList);
+
+    if (currentUser) {
+      const form = makeElement('form', 'comment-form');
+
+      const label = makeElement('label', '', 'Write a comment');
+      label.htmlFor = 'comment-input-' + postId;
+
+      const textarea = makeElement('textarea');
+      textarea.id = 'comment-input-' + postId;
+      textarea.maxLength = 1000;
+      textarea.placeholder = 'Add to the conversation...';
+      textarea.required = true;
+
+      const submit = makeElement('button', 'btn full', 'Send comment');
+      submit.type = 'submit';
+
+      form.append(label, textarea, submit);
+
+      form.addEventListener('submit', async event => {
+        event.preventDefault();
+
+        const content = textarea.value.trim();
+
+        if (!content) return;
+
+        submit.disabled = true;
+        submit.textContent = 'Sending...';
+
+        try {
+          const { error: insertError } = await supabase
+            .from('post_comments')
+            .insert({
+              post_id: postId,
+              user_id: currentUser.id,
+              content
+            });
+
+          if (insertError) throw insertError;
+
+          await renderCommentsState(postId, postElement);
+
+        } catch (error) {
+          showMessage(
+            'feedMessage',
+            'Could not send comment: ' + readableError(error)
+          );
+
+          submit.disabled = false;
+          submit.textContent = 'Send comment';
+        }
+      });
+
+      area.append(form);
+    } else {
+      area.append(
+        makeElement('p', 'muted small', 'Log in to write a comment.')
+      );
+    }
+
+  } catch (error) {
+    area.replaceChildren(
+      makeElement(
+        'p',
+        'muted',
+        'Could not load comments: ' + readableError(error)
+      )
+    );
+  }
+}
+
+/* DELETE OWN COMMENT */
+async function deleteComment(commentId, postId, button) {
+  if (!currentUser) return;
+
+  if (!confirm('Delete this comment?')) return;
+
+  button.disabled = true;
+
+  try {
+    const { error } = await supabase
+      .from('post_comments')
+      .delete()
+      .eq('id', commentId)
+      .eq('user_id', currentUser.id);
+
+    if (error) throw error;
+
+    const postElement = document.querySelector(
+      '[data-post-id="' + postId + '"]'
+    );
+
+    if (postElement) {
+      await renderCommentsState(postId, postElement);
+    }
+
+  } catch (error) {
+    showMessage(
+      'feedMessage',
+      'Could not delete comment: ' + readableError(error)
+    );
+
+    button.disabled = false;
+  }
+}
+
+/* AUTH SESSION */
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === 'INITIAL_SESSION') return;
+
+  setTimeout(() => {
+    renderSession(session);
+  }, 0);
+});
+
+/* INITIAL STARTUP */
+try {
+  const { data, error } = await supabase.auth.getSession();
+
+  if (error) throw error;
+
+  await renderSession(data.session);
+
+} catch (error) {
+  console.error('Startup error:', error);
+
+  showMessage(
+    'authMessage',
+    'Could not check your session. Refresh the page and try again.'
+  );
+}
 </script>
 
 </body>
